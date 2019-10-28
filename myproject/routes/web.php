@@ -19,11 +19,15 @@ Route::prefix('linhvuc')->group(function(){
 		Route::get('/', 'LinhVucController@index')->name('danhsach');
 		Route::get('/them-moi', 'LinhVucController@create')->name('them-moi');
 		Route::post('/them-moi', 'LinhVucController@store')->name('xl-them-moi');
-		Route::get('/update', 'LinhVucController@sua')->name('update');
+		Route::get('/update/{id}', 'LinhVucController@edit')->name('edit');
+		Route::post('/update', 'LinhVucController@update')->name('update');
+		Route::delete('/xoa/{id}', 'LinhVucController@destroy')->name('xoa');
 	});
 }); 
 
 Route::get('goi-credit', 'GoiCreditController@index')->name('ds-goi-credit');
+Route::get('cau-hoi', 'CauHoiController@index')->name('ds-cauhoi');
+Route::get('dang-nhap', 'QuanTriVienController@dangNhap');
 
 
 

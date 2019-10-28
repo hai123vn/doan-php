@@ -334,19 +334,19 @@
 
                             <li class="">
                                 <a href="{{ route('trang-chu') }}">
-                                    <i class="la la-dashboard"></i>Trang chủ</a>
+                                    <i class="la la-dashboard"></i>TRANG CHỦ</a>
                             </li>
                             <li class="has-submenu">
-                                <a href="{{ route('linh-vuc.danhsach') }}"> <i class="la la-clone"></i>Lĩnh vực </a>
-                            </li>
-
-                            <li class="has-submenu">
-                                <a href="{{ route('ds-goi-credit') }}"> <i class="la la-briefcase"></i>Gói Credit</a>
+                                <a href="{{ route('linh-vuc.danhsach') }}"> <i class="la la-clone"></i>LĨNH VỰC</a>
                             </li>
 
                             <li class="has-submenu">
-                                <a href="#">
-                                    <i class="la la-diamond"></i>Components <div class="arrow-down"></div></a>
+                                <a href="{{ route('ds-cauhoi') }}"> <i class="la la-briefcase"></i>CÂU HỎI</a>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="{{ route('ds-goi-credit') }}">
+                                    <i class="la la-diamond"></i>GÓI CREDIT <div class="arrow-down"></div></a>
                                 <ul class="submenu">
                                     <li class="has-submenu">
                                         <a href="#"><i class="fe-bookmark mr-1"></i> Forms <div class="arrow-down"></div></a>

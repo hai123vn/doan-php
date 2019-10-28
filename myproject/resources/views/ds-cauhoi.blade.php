@@ -6,7 +6,7 @@
 <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/libs/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-<!-- third party css end -->
+        <!-- third party css end -->
 @endsection
 
 @section('js')
@@ -26,7 +26,7 @@
         <script src="{{asset('assets/libs/pdfmake/vfs_fonts.js') }}"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
-			    $("#linhvuc-datatable").DataTable({
+			    $("#cauhoi-datatable").DataTable({
 			        language: {
 			            paginate: {
 			                previous: "<i class='mdi mdi-chevron-left'>",
@@ -36,24 +36,6 @@
 			        drawCallback: function() {
 			            $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
 			        }
-			    });
-
-			    $('.xoa-linh-vuc').click(function(e) {
-			    	e.preventDefault();// de no dung lai khong phai chuyen page
-			    	var th = $(this);
-			    	Swal.fire({
-			            title: "Are you sure?",
-			            text: "You won't be able to revert this!",
-			            type: "success",
-			            showCancelButton: !0,
-			            confirmButtonColor: "#3085d6",
-			            cancelButtonColor: "#d33",
-			            confirmButtonText: "Yes, delete it!"
-			        }).then(function(t) {
-			            if(t.value) {
-			            	th.parent().submit()
-			            }
-			        })
 			    });
 			});
 		</script>
@@ -65,35 +47,41 @@
 	<div class="col-12">
 	    <div class="card">
 	        <div class="card-body">
-	            <h4 class="header-title">Danh sách lĩnh vực</h4>	       
+	            <h4 class="header-title">Danh sách câu hỏi</h4>	       
 	            <table id="linhvuc-datatable" class="table dt-responsive nowrap">
 	                <thead>
 	                    <tr>
 	                        <th>ID</th>
-	                        <th>Tên lĩnh vực</th>
+	                        <th>Nội dung</th>
+	                        <th>Lĩnh vực</th>
+	                        <th>Phương án A</th>
+	                        <th>Phương án B</th>
+	                        <th>Phương án C</th>
+	                        <th>Phương án D</th>
+	                        <th>Đáp án</th>
 	                        <th></th>
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                	@foreach($dsLinhVuc as $linhvuc)
+	                	@foreach($dsCauHoi as $cauhoi)
 	                		<tr>
 	                			<td>{{ $linhvuc->id }}</td>
 			                	<td>{{ $linhvuc->ten_linh_vuc }}</td>
+			                	<td>{{ $linhvuc->phuong_an_a }}</td>
+			                	<td>{{ $linhvuc->phuong_an_b }}</td>
+			                	<td>{{ $linhvuc->phuong_an_c }}</td>
+			                	<td>{{ $linhvuc->phuong_an_d }}</td>
+			                	<td>{{ $linhvuc->dap_an }}</td>
 			                	<td>
-			                		<form action="{{ route('linh-vuc.xoa', ['id' => $linhvuc->id ]) }}" method="POST">
-			                			@csrf
-			                			@method('DELETE')
-				                		<a href="{{ route('linh-vuc.edit', ['id' => $linhvuc->id ]) }}" type="button" class="btn btn-danger waves-effect waves-light"><i class="icon-wrench"></i></a>
-				                		
-				                		<button type="submit" class="xoa-linh-vuc btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></button>
-			                		</form>
+			                		<button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-pencil-outline"></i></button>
+			                		<button type="button" class="btn btn-purple waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></button>
+			                		<button type="button" class="btn btn-warning waves-effect waves-light"><i class="fas fa-trash-restore-alt"></i></button>
 			                	</td>
-			                
 	                		</tr>
 	                	@endforeach
 	                </tbody>
 	            </table>
-				<a href="{{ route('linh-vuc.them-moi') }}" type="button" class="btn btn-block btn-lg btn-primary waves-effect waves-light">Thêm mới lĩnh vực</a>
+				<a href="{{ route('linh-vuc.them-moi') }}" type="button" class="btn btn-block btn-lg btn-primary waves-effect waves-light">Thêm mới câu hỏi</a>
 	        </div> <!-- end card body-->
 	    </div> <!-- end card -->
 	</div><!-- end col-->

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\LinhVuc;
+use App\CauHoi;
 
-class LinhVucController extends Controller
+class CauHoiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class LinhVucController extends Controller
      */
     public function index()
     {
-        $dsLinhVuc = LinhVuc::all();
-        return view('danhsachlinhvuc', compact('dsLinhVuc'));
+        $dsCauHoi = CauHoi::all();
+        return view('ds-cauhoi', compact('dsCauHoi'));
     }
 
     /**
@@ -25,7 +25,7 @@ class LinhVucController extends Controller
      */
     public function create()
     {
-        return view('themmoi-linhvuc');
+        //
     }
 
     /**
@@ -36,12 +36,7 @@ class LinhVucController extends Controller
      */
     public function store(Request $request)
     {
-        $linhVuc = new LinhVuc;
-        $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
-        $linhVuc->save();
-
-        // return back(); Quay ve trang truoc
-        return redirect()->route('linh-vuc.danhsach');
+        //
     }
 
     /**
@@ -63,8 +58,7 @@ class LinhVucController extends Controller
      */
     public function edit($id)
     {
-        $dsLinhVuc = LinhVuc::find($id);
-        return view('update-linhvuc', compact('dsLinhVuc'));
+        //
     }
 
     /**
@@ -74,12 +68,9 @@ class LinhVucController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $dsLinhVuc = LinhVuc::find($request->id);
-        $dsLinhVuc->ten_linh_vuc = $request->ten_linh_vuc;  
-        $kq = $dsLinhVuc->save();
-        return redirect()->route('linh-vuc.danhsach');
+        //
     }
 
     /**
@@ -90,9 +81,6 @@ class LinhVucController extends Controller
      */
     public function destroy($id)
     {
-        $dsLinhVuc = LinhVuc::find($id);
-        $dsLinhVuc -> Delete();
-        return redirect() ->route('linh-vuc.danhsach');
+        //
     }
-
 }

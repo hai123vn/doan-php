@@ -66,8 +66,9 @@
 			                	<td>{{ $goicredit->credit }}</td>
 			                	<td>{{ $goicredit->so_tien }}</td>
 			                	<td>
-			                		<button><i class="mdi mdi-pencil-outline"></i></button>
-			                		<button><i class="mdi mdi-trash-can-outline"></i></button>
+			                		<button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-pencil-outline"></i></button>
+			                		<button type="button" class="btn btn-purple waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></button>
+			                		<button type="button" class="btn btn-warning waves-effect waves-light"><i class="fas fa-trash-restore-alt"></i></button>
 			                	</td>
 	                		</tr>
 	                	@endforeach

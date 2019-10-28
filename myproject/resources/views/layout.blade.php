@@ -12,8 +12,10 @@
 
         @yield('css')
 
+         <!-- Sweet Alert-->
+        <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css"/>
         <!-- App css -->
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -172,13 +174,13 @@
         <!-- Vendor js -->
         <script src="{{asset('assets/js/vendor.min.js') }}"></script>
 
-        @yield('js')
 
-        <!-- Datatables init -->
-        <script src="{{asset('assets/js/pages/datatables.init.js') }}"></script>
+        <!-- Sweet Alerts js -->
+        <script src="{{asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
         <!-- App js-->
         <script src="{{asset('assets/js/app.min.js') }}"></script>
-        
+        @yield('js')
+
     </body>
 </html>
