@@ -38,9 +38,18 @@ class LinhVucController extends Controller
      */
     public function store(Request $request)
     {
-        $linhVuc = new LinhVuc;
-        $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
-        $linhVuc->save();
+        try{
+            $linhVuc = new LinhVuc;
+            $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
+            $linhVuc->save();
+            return back()->with('msg', "Thêm lĩnh vực thành công");
+        } catch (Exception $e)
+        {
+            return back()
+                        ->withErrors('Có lỗi xảy ra, mời thử lại sau')
+                        ->withInput();
+        }
+        
 
         // return back(); Quay ve trang truoc
         return redirect()->route('linh-vuc.danhsach');

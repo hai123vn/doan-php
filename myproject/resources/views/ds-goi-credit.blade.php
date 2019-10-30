@@ -38,6 +38,24 @@
 			        }
 			    });
 			});
+
+			$('.xoa-goi-credit').click(function(e) {
+			    	e.preventDefault();// de no dung lai khong phai chuyen page
+			    	var th = $(this);
+			    	Swal.fire({
+			            title: "Are you sure?",
+			            text: "You won't be able to revert this!",
+			            type: "success",
+			            showCancelButton: !0,
+			            confirmButtonColor: "#3085d6",
+			            cancelButtonColor: "#d33",
+			            confirmButtonText: "Yes, delete it!"
+			        }).then(function(t) {
+			            if(t.value) {
+			            	th.parent().submit()
+			            }
+			        })
+			    });
 		</script>
         <!-- third party js ends -->
 @endsection
@@ -66,9 +84,13 @@
 			                	<td>{{ $goicredit->credit }}</td>
 			                	<td>{{ $goicredit->so_tien }}</td>
 			                	<td>
-			                		<button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-pencil-outline"></i></button>
-			                		<button type="button" class="btn btn-purple waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></button>
-			                		<button type="button" class="btn btn-warning waves-effect waves-light"><i class="fas fa-trash-restore-alt"></i></button>
+			                		<form action="{{ route('goi-credit.xoa', ['id' => $goicredit->id ]) }}" method="POST">
+			                			@csrf
+			                			@method('DELETE')
+				                		<a href="{{ route('goi-credit.edit', ['id' => $goicredit->id ]) }}" type="button" class="btn btn-danger waves-effect waves-light"><i class="icon-wrench"></i></a>
+				                		
+				                		<button type="submit" class="xoa-goi-credit btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></button>
+			                		</form>
 			                	</td>
 	                		</tr>
 	                	@endforeach

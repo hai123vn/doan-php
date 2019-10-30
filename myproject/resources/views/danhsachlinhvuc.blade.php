@@ -61,6 +61,10 @@
 @endsection
 
 @section('main-content')
+<div>
+	@include('thongbao')
+	@include('thongbaoloi')
+</div>
 <div class="row">
 	<div class="col-6">
 	    <div class="card">
@@ -105,7 +109,7 @@
 	            	@csrf
 	                <div class="form-group">
 	                    <label for="exampleInputEmail1">Tên lĩnh vực</label>
-	                    <input class="form-control" id="ten_linh_vuc" name="ten_linh_vuc" placeholder="Tên lĩnh vực">
+	                    <input class="form-control" id="ten_linh_vuc" name="ten_linh_vuc" required="" placeholder="Tên lĩnh vực">
 	                </div>
 	                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
 	            </form>

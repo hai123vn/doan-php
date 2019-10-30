@@ -66,7 +66,8 @@ class GoiCreditController extends Controller
      */
     public function edit($id)
     {
-        
+        $dsGoiCredit = GoiCredit::find($id);
+        return view('update-goicredit', compact('dsGoiCredit'));
     }
 
     /**
@@ -76,9 +77,14 @@ class GoiCreditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $dsGoiCredit = GoiCredit::find($request->id);
+        $dsGoiCredit->ten_goi = $request->ten_goi;
+        $dsGoiCredit->credit = $request->credit;
+        $dsGoiCredit->so_tien = $request->so_tien;  
+        $kq = $dsGoiCredit->save();
+        return redirect()->route('goi-credit.ds-goi-credit');
     }
 
     /**
@@ -89,6 +95,8 @@ class GoiCreditController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dsGoiCredit = GoiCredit::find($id);
+        $dsGoiCredit -> Delete();
+        return redirect() ->route('goi-credit.ds-goi-credit');
     }
 }

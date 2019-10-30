@@ -6,7 +6,7 @@
 <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/libs/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
+<!-- third party css end -->
 @endsection
 
 @section('js')
@@ -37,18 +37,40 @@
 			            $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
 			        }
 			    });
+
+			    $('.xoa-linh-vuc').click(function(e) {
+			    	e.preventDefault();// de no dung lai khong phai chuyen page
+			    	var th = $(this);
+			    	Swal.fire({
+			            title: "Are you sure?",
+			            text: "You won't be able to revert this!",
+			            type: "success",
+			            showCancelButton: !0,
+			            confirmButtonColor: "#3085d6",
+			            cancelButtonColor: "#d33",
+			            confirmButtonText: "Yes, delete it!"
+			        }).then(function(t) {
+			            if(t.value) {
+			            	th.parent().submit()
+			            }
+			        })
+			    });
 			});
 		</script>
         <!-- third party js ends -->
 @endsection
 
 @section('main-content')
+<div>
+	@include('thongbao')
+	@include('thongbaoloi')
+</div>
 <div class="row">
-	<div class="col-12">
+	<div class="col-10">
 	    <div class="card">
 	        <div class="card-body">
 	            <h4 class="header-title">Danh sách câu hỏi</h4>	       
-	            <table id="linhvuc-datatable" class="table dt-responsive nowrap">
+	            <table id="cauhoi-datatable" class="table dt-responsive nowrap">
 	                <thead>
 	                    <tr>
 	                        <th>ID</th>
@@ -65,26 +87,73 @@
 	                <tbody>
 	                	@foreach($dsCauHoi as $cauhoi)
 	                		<tr>
-	                			<td>{{ $linhvuc->id }}</td>
-			                	<td>{{ $linhvuc->ten_linh_vuc }}</td>
-			                	<td>{{ $linhvuc->phuong_an_a }}</td>
-			                	<td>{{ $linhvuc->phuong_an_b }}</td>
-			                	<td>{{ $linhvuc->phuong_an_c }}</td>
-			                	<td>{{ $linhvuc->phuong_an_d }}</td>
-			                	<td>{{ $linhvuc->dap_an }}</td>
+	                			<td>{{ $cauhoi->id }}</td>
+			                	<td>{{ $cauhoi->noi_dung }}</td>
+			                	<td>{{ $cauhoi->linhVuc->ten_linh_vuc }}</td>
+			                	<td>{{ $cauhoi->phuong_an_a}}</td>
+			                	<td>{{ $cauhoi->phuong_an_b}}</td>
+			                	<td>{{ $cauhoi->phuong_an_c}}</td>
+			                	<td>{{ $cauhoi->phuong_an_d}}</td>
+			                	<td>{{ $cauhoi->dap_an}}</td>
 			                	<td>
-			                		<button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-pencil-outline"></i></button>
-			                		<button type="button" class="btn btn-purple waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></button>
-			                		<button type="button" class="btn btn-warning waves-effect waves-light"><i class="fas fa-trash-restore-alt"></i></button>
-			                	</td>
+			                		<form action="{{ route('cau-hoi.xoa', ['id' => $cauhoi->id ]) }}" method="POST">
+			                			@csrf
+			                			@method('DELETE')
+				                		<a href="{{ route('cau-hoi.edit', ['id' => $cauhoi->id ]) }}" type="button" class="btn btn-danger waves-effect waves-light"><i class="icon-wrench"></i></a>	
+				                		<button type="submit" class="xoa-cau-hoi btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></button>
+			                		</form>
+			                	</td>			                
 	                		</tr>
 	                	@endforeach
 	                </tbody>
 	            </table>
-				<a href="{{ route('linh-vuc.them-moi') }}" type="button" class="btn btn-block btn-lg btn-primary waves-effect waves-light">Thêm mới câu hỏi</a>
 	        </div> <!-- end card body-->
 	    </div> <!-- end card -->
 	</div><!-- end col-->
+	<div class="col-lg-2">
+	    <div class="card">
+	        <div class="card-body">
+	            <h4 class="mb-3 header-title">Thêm mới câu hỏi</h4>
+
+	            <form action="{{ route('linh-vuc.xl-them-moi') }}" method="POST">
+	            	@csrf
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Nội dung</label>
+	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                </div>
+
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Nội dung</label>
+	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                </div>
+
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Lĩnh vực</label>
+	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                </div>
+
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Nội dung</label>
+	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                </div>
+
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Nội dung</label>
+	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                </div>
+
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Nội dung</label>
+	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                </div>
+	                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
+	            </form>
+	        </div> <!-- end card-body-->
+	    </div> <!-- end card-->
+	</div><!-- end col -->
+	
 	</div>
 @endsection 
+
+ 
 

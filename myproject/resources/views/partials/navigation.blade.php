@@ -341,7 +341,7 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('ds-cauhoi') }}"> <i class="la la-briefcase"></i>CÂU HỎI</a>
+                                <a href="{{ route('cau-hoi.ds-cauhoi') }}"> <i class="la la-briefcase"></i>CÂU HỎI</a>
                             </li>
 
                             <li class="has-submenu">
