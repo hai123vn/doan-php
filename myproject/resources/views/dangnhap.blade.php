@@ -31,13 +31,13 @@
                                     <a href="index.html">
                                         <span><img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="26"></span>
                                     </a>
-                                    <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
+                                   <p></p>
                                 </div>
 
                                 <h5 class="auth-title">Sign In</h5>
 
                                 <form action="#" method="POST">
-                                    @crsf
+                                    @csrf
                                     <div class="form-group mb-3">
                                         <label for="emailaddress">Tên đăng nhập</label>
                                         <input class="form-control" type="text" id="ten_dang_nhap" name="ten_dang_nhap" required="" placeholder="Nhập tên đăng nhập">

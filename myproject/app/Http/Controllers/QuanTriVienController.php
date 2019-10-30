@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\LinhVuc;
+use Illuminate\Support\Facades\Hash;
+use App\QuanTriVien;
 use Illuminate\Support\Facades\Auth;
 
-class LinhVucController extends Controller
+class QuanTriVienController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,7 @@ class LinhVucController extends Controller
      */
     public function index()
     {
-        $dsLinhVuc = LinhVuc::all();
-        return view('danhsachlinhvuc', compact('dsLinhVuc'));
-        //return Auth::user();
+        
     }
 
     /**
@@ -27,7 +26,7 @@ class LinhVucController extends Controller
      */
     public function create()
     {
-        return view('themmoi-linhvuc');
+        //
     }
 
     /**
@@ -38,12 +37,7 @@ class LinhVucController extends Controller
      */
     public function store(Request $request)
     {
-        $linhVuc = new LinhVuc;
-        $linhVuc->ten_linh_vuc = $request->ten_linh_vuc;
-        $linhVuc->save();
-
-        // return back(); Quay ve trang truoc
-        return redirect()->route('linh-vuc.danhsach');
+        //
     }
 
     /**
@@ -65,8 +59,7 @@ class LinhVucController extends Controller
      */
     public function edit($id)
     {
-        $dsLinhVuc = LinhVuc::find($id);
-        return view('update-linhvuc', compact('dsLinhVuc'));
+        //
     }
 
     /**
@@ -76,12 +69,9 @@ class LinhVucController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $dsLinhVuc = LinhVuc::find($request->id);
-        $dsLinhVuc->ten_linh_vuc = $request->ten_linh_vuc;  
-        $kq = $dsLinhVuc->save();
-        return redirect()->route('linh-vuc.danhsach');
+        //
     }
 
     /**
@@ -92,8 +82,44 @@ class LinhVucController extends Controller
      */
     public function destroy($id)
     {
-        $dsLinhVuc = LinhVuc::find($id);
-        $dsLinhVuc -> Delete();
-        return redirect() ->route('linh-vuc.danhsach');
+        //
+    }
+
+    public function dangNhap()
+    {
+        return view('dangnhap');
+    }
+
+    public function xuLyDangNhap(Request $request)
+    {
+        $thongTin = $request->only(['ten_dang_nhap', 'mat_khau']);
+        $qtv = QuanTriVien::where('ten_dang_nhap', $thongTin['ten_dang_nhap'])->first();
+
+        if($qtv == null)
+        {
+            return "sai tên đăng nhập";
+        } 
+
+        if(!Hash::check($thongTin['mat_khau'], $qtv->mat_khau))
+        {
+            return "sai mật khẩu";
+        }
+
+        Auth::login($qtv);
+        
+            return redirect()->route('trang-chu');
+    }
+
+    public function dangXuat()
+    {
+        Auth::logout();
+        return redirect()->route('dang-nhap');
+    }
+
+    protected $redirectTo = 'trang-chu';
+    protected function redirectTo()
+    {
+        return 'trang-chu';
     }
 }
+
