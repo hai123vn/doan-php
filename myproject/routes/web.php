@@ -27,7 +27,13 @@ Route::middleware('auth')->group(function(){
 	});
 });
 
-Route::get('goi-credit', 'GoiCreditController@index')->name('ds-goi-credit');
+	Route::prefix('goicredit')->group(function(){
+		Route::name('goi-credit.')->group(function(){
+			Route::get('/', 'GoiCreditController@index')->name('ds-goi-credit');
+			Route::get('/them-moi', 'GoiCreditController@create')->name('them-moi');
+			Route::post('/them-moi', 'GoiCreditController@store')->name('xl-them-moi');
+		});
+	});
 Route::get('cau-hoi', 'CauHoiController@index')->name('ds-cauhoi');
 Route::get('dang-nhap', 'QuanTriVienController@dangNhap')->name('dang-nhap');
 Route::get('dang-xuat', 'QuanTriVienController@dangXuat')->name('dang-xuat');

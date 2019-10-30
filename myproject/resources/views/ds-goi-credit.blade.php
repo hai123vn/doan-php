@@ -80,21 +80,28 @@
 	<div class="col-lg-6">
 	    <div class="card">
 	        <div class="card-body">
-	            <h4 class="mb-3 header-title">Thêm mới lĩnh vực</h4>
+	            <h4 class="mb-3 header-title">Thêm mới gói credit</h4>
 
-	            <form action="{{ route('linh-vuc.xl-them-moi') }}" method="POST">
+	            <form action="{{ route('goi-credit.xl-them-moi') }}" method="POST">
 	            	@csrf
 	                <div class="form-group">
-	                    <label for="exampleInputEmail1">Tên lĩnh vực</label>
-	                    <input class="form-control" id="ten_linh_vuc" name="ten_linh_vuc" placeholder="Tên lĩnh vực">
+	                    <label for="exampleInputEmail1">Tên gói</label>
+	                    <input class="form-control" id="ten_goi" name="ten_goi" placeholder="Tên gói">
+	                </div>
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Credit</label>
+	                    <input class="form-control" id="credit" name="credit" placeholder="Credit">
+	                </div>
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Số tiền</label>
+	                    <input class="form-control" id="so_tien" name="so_tien" placeholder="Số tiền">
 	                </div>
 	                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
 	            </form>
 
 	        </div> <!-- end card-body-->
 	    </div> <!-- end card-->
-
 	</div><!-- end col -->
-	</div>
+</div>
 @endsection 
 	

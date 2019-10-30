@@ -110,9 +110,7 @@
 	                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
 	            </form>
 	        </div> <!-- end card-body-->
-	    	
 	    </div> <!-- end card-->
-
 	</div><!-- end col -->
 	
 	</div>

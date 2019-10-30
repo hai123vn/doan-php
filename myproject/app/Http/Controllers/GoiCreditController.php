@@ -26,7 +26,7 @@ class GoiCreditController extends Controller
      */
     public function create()
     {
-        //
+        //return view('themmoi-goicredit');
     }
 
     /**
@@ -37,7 +37,14 @@ class GoiCreditController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $goiCredit = new GoiCredit;
+        $goiCredit->ten_goi = $request->ten_goi;
+        $goiCredit->credit = $request->credit;
+        $goiCredit->so_tien = $request->so_tien;
+        $goiCredit->save();
+
+        // return back(); Quay ve trang truoc
+        return redirect()->route('goi-credit.ds-goi-credit');
     }
 
     /**
@@ -59,7 +66,7 @@ class GoiCreditController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

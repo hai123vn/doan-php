@@ -345,7 +345,7 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('ds-goi-credit') }}">
+                                <a href="{{ route('goi-credit.ds-goi-credit') }}">
                                     <i class="la la-diamond"></i>GÓI CREDIT <div class="arrow-down"></div></a>
                                 <ul class="submenu">
                                     <li class="has-submenu">
