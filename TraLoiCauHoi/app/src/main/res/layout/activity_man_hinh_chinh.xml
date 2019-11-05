@@ -79,7 +79,7 @@
                 android:text="Quản lý tài khoản"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#D5FFFFFF"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Button
@@ -88,11 +88,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/custom_button_xanh"
-                android:text="Trò chơi mới"
                 android:onClick="ChonLinhVuc"
+                android:text="Trò chơi mới"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#D5FFFFFF"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Button
@@ -105,7 +105,7 @@
                 android:text="Lịch sử chơi"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#D5FFFFFF"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Button
@@ -118,7 +118,7 @@
                 android:text="Bảng xếp hạng"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#D5FFFFFF"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Button
@@ -127,11 +127,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/custom_button_cam"
-                android:text="Mua credit"
                 android:onClick="MuaCredit"
+                android:text="Mua credit"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#D5FFFFFF"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
