@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MuaCreditActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="198dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/custom_layout_xanh"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtTen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Trần Văn Cường"
+                    android:textColor="#D5FFFFFF"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textCredit"
+                    android:layout_width="126dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_text_cam"
+                    android:gravity="center|center_horizontal|center_vertical"
+                    android:text="5000"
+
+                    android:textColor="#D5FFFFFF"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="49dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_background_nau"
+                    app:srcCompat="@drawable/ic_monetization_on_black_24dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Mua Credit"
+                android:textColor="@color/color_do"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCredit1"
+                    android:layout_width="match_parent"
+                    android:layout_height="198dp"
+                    android:background="@color/color_nau"
+                    app:cardBackgroundColor="@color/color_nau">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|top"
+                        android:text="5000$"
+                        android:textColor="#FFF310"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="196dp"
+                        android:layout_height="171dp"
+                        android:layout_gravity="bottom"
+                        app:srcCompat="@drawable/ic_monetization_on_black_24dp"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCredit2"
+                    android:layout_width="match_parent"
+                    android:layout_height="198dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_nau"
+                    app:cardBackgroundColor="@color/color_nau">
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|top"
+                        android:text="1000$"
+                        android:textColor="#FFF310"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView34"
+                        android:layout_width="196dp"
+                        android:layout_height="171dp"
+                        android:layout_gravity="bottom"
+                        app:srcCompat="@drawable/ic_monetization_on_black_24dp" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCredit3"
+                    android:layout_width="match_parent"
+                    android:layout_height="198dp"
+                    android:background="@color/color_nau"
+                    app:cardBackgroundColor="@color/color_nau">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|top"
+                        android:text="3000$"
+                        android:textColor="#FFF310"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="196dp"
+                        android:layout_height="171dp"
+                        android:layout_gravity="bottom"
+                        app:srcCompat="@drawable/ic_monetization_on_black_24dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCredit4"
+                    android:layout_width="match_parent"
+                    android:layout_height="198dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_nau"
+                    app:cardBackgroundColor="@color/color_nau">
+
+                    <TextView
+                        android:id="@+id/textView124"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|top"
+                        android:text="500$"
+                        android:textColor="#FFF310"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView324"
+                        android:layout_width="196dp"
+                        android:layout_height="171dp"
+                        android:layout_gravity="bottom"
+                        app:srcCompat="@drawable/ic_monetization_on_black_24dp" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
