@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CauHoi;
+use App\LinhVuc;
 
 class CauHoiController extends Controller
 {
@@ -15,7 +16,8 @@ class CauHoiController extends Controller
     public function index()
     {
         $dsCauHoi = CauHoi::all();
-        return view('ds-cauhoi', compact('dsCauHoi'));
+        $dsLinhVuc = LinhVuc::all();
+        return view('ds-cauhoi', compact('dsCauHoi','dsLinhVuc'));
     }
 
     /**
@@ -25,7 +27,8 @@ class CauHoiController extends Controller
      */
     public function create()
     {
-        //
+           $dsLinhVuc = LinhVuc::all();
+            return view('themmoi-cauhoi', compact('dsLinhVuc'));
     }
 
     /**
@@ -36,6 +39,8 @@ class CauHoiController extends Controller
      */
     public function store(Request $request)
     {
+        try{
+        $dsLinhVuc = LinhVuc::all();
         $cauhoi = new CauHoi;
         $cauhoi->noi_dung = $request->noi_dung;
         $cauhoi->linh_vuc_id = $request->linh_vuc_id;
@@ -45,6 +50,13 @@ class CauHoiController extends Controller
         $cauhoi->phuong_an_d = $request->phuong_an_d;
         $cauhoi->dap_an = $request->dap_an;
         $cauhoi->save();
+            return back()->with('msg', 'Thêm câu hỏi thành công');
+        } catch (Exception $e)
+        {
+            return back()
+                        ->withErrors('Có lỗi xảy ra, mời thử lại sau')
+                        ->withInput();
+        }
 
         // return back(); Quay ve trang truoc
         return redirect()->route('cau-hoi.ds-cauhoi');
@@ -69,7 +81,8 @@ class CauHoiController extends Controller
      */
     public function edit($id)
     {
-        //
+          $CauHoi = CauHoi::find($id);
+        return view('update-cauhoi', compact('CauHoi'));
     }
 
     /**

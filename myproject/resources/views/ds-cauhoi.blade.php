@@ -66,7 +66,7 @@
 	@include('thongbaoloi')
 </div>
 <div class="row">
-	<div class="col-10">
+	<div class="col-6">
 	    <div class="card">
 	        <div class="card-body">
 	            <h4 class="header-title">Danh sách câu hỏi</h4>	       
@@ -89,7 +89,7 @@
 	                		<tr>
 	                			<td>{{ $cauhoi->id }}</td>
 			                	<td>{{ $cauhoi->noi_dung }}</td>
-			                	<td>{{ $cauhoi->linhVuc->ten_linh_vuc }}</td>
+			                	<td>{{ $cauhoi->linh_vuc_id }}</td>
 			                	<td>{{ $cauhoi->phuong_an_a}}</td>
 			                	<td>{{ $cauhoi->phuong_an_b}}</td>
 			                	<td>{{ $cauhoi->phuong_an_c}}</td>
@@ -110,49 +110,58 @@
 	        </div> <!-- end card body-->
 	    </div> <!-- end card -->
 	</div><!-- end col-->
-	<div class="col-lg-2">
-	    <div class="card">
+	<div class="col-6">
+		<div class="card">
 	        <div class="card-body">
 	            <h4 class="mb-3 header-title">Thêm mới câu hỏi</h4>
 
-	            <form action="{{ route('linh-vuc.xl-them-moi') }}" method="POST">
+	            <form action="{{ route('cau-hoi.xl-them-moi') }}" method="POST">
 	            	@csrf
 	                <div class="form-group">
 	                    <label for="exampleInputEmail1">Nội dung</label>
-	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
-	                </div>
-
-	                <div class="form-group">
-	                    <label for="exampleInputEmail1">Nội dung</label>
-	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="Nội dung">
 	                </div>
 
 	                <div class="form-group">
 	                    <label for="exampleInputEmail1">Lĩnh vực</label>
-	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                    <select id="linh_vuc_id" name="linh_vuc_id" class="form-control">
+	                    	<option>Chọn lĩnh vực</option>
+	                    	@foreach( $dsLinhVuc as $linhVuc)
+	                    	<option value="{{ $linhVuc->id }}">{{ $linhVuc->ten_linh_vuc }}</option>
+	                    	@endforeach
+	                    </select>
 	                </div>
 
 	                <div class="form-group">
-	                    <label for="exampleInputEmail1">Nội dung</label>
-	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                    <label for="exampleInputEmail1">Phương án A</label>
+	                    <input class="form-control" id="phuong_an_a" name="phuong_an_a" required="" placeholder="Phương án A">
 	                </div>
 
 	                <div class="form-group">
-	                    <label for="exampleInputEmail1">Nội dung</label>
-	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                    <label for="exampleInputEmail1">Phương án B</label>
+	                    <input class="form-control" id="phuong_an_b" name="phuong_an_b" required="" placeholder="Phương án B">
 	                </div>
 
 	                <div class="form-group">
-	                    <label for="exampleInputEmail1">Nội dung</label>
-	                    <input class="form-control" id="noi_dung" name="noi_dung" required="" placeholder="nội dung">
+	                    <label for="exampleInputEmail1">Phương án C</label>
+	                    <input class="form-control" id="phuong_an_c" name="phuong_an_c" required="" placeholder="Phương án C">
+	                </div>
+
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Phương án D</label>
+	                    <input class="form-control" id="phuong_an_d" name="phuong_an_d" required="" placeholder="Phương án D">
+	                </div>
+
+	                <div class="form-group">
+	                    <label for="exampleInputEmail1">Đáp án</label>
+	                    <input class="form-control" id="dap_an" name="dap_an" required="" placeholder="Đáp ">
 	                </div>
 	                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
 	            </form>
 	        </div> <!-- end card-body-->
-	    </div> <!-- end card-->
-	</div><!-- end col -->
-	
+	    </div>
 	</div>
+</div>
 @endsection 
 
  
