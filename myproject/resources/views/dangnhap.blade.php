@@ -34,24 +34,38 @@
                                    <p></p>
                                 </div>
 
-                                <h5 class="auth-title">Sign In</h5>
+                                <h5 class="auth-title">Đăng nhập</h5>
+                                
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        @foreach($errors->all() as $err)
+                                        <li>{{ $err }}</li>
+                                        @endforeach
+                                    </div>
+                                @endif
+
+                                @if(session('thong-bao'))
+                                    <div class="alert alert-success">
+                                        {{ session('thong-bao') }}
+                                    </div>
+                                @endif
 
                                 <form action="#" method="POST">
                                     @csrf
                                     <div class="form-group mb-3">
                                         <label for="emailaddress">Tên đăng nhập</label>
-                                        <input class="form-control" type="text" id="ten_dang_nhap" name="ten_dang_nhap" required="" placeholder="Nhập tên đăng nhập">
+                                        <input class="form-control" type="text" id="ten_dang_nhap" name="ten_dang_nhap"  placeholder="Nhập tên đăng nhập">
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label for="password">Mật khẩu</label>
-                                        <input class="form-control" type="password" required="" id="mat_khau" name="mat_khau" placeholder="Nhập mật khẩu">
+                                        <input class="form-control" type="password"  id="mat_khau" name="mat_khau" placeholder="Nhập mật khẩu">
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <div class="custom-control custom-checkbox checkbox-info">
                                             <input type="checkbox" class="custom-control-input" id="checkbox-signin">
-                                            <label class="custom-control-label" for="checkbox-signin">Remember me</label>
+                                            <label class="custom-control-label" value="remember" for="checkbox-signin">Remember me</label>
                                         </div>
                                     </div>
 
