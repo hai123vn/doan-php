@@ -1,4 +1,4 @@
-<!-- Navigation Bar-->
+
         <header id="topnav">
 
             <!-- Topbar Start -->
@@ -128,7 +128,10 @@
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <img src="{{asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
                                 <span class="pro-user-name ml-1" >
-                                 Admin1   <i class="mdi mdi-chevron-down"></i> 
+                                 @auth
+                                 {{ Auth()->user()->ten_dang_nhap }}
+                                 @endauth
+                                  <i class="mdi mdi-chevron-down"></i> 
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -577,4 +580,4 @@
             <!-- end navbar-custom -->
 
         </header>
-        <!-- End Navigation Bar-->
+        <!-- End Navigation Bar
