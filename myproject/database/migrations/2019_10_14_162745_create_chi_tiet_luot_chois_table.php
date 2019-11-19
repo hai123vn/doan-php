@@ -17,6 +17,8 @@ class CreateChiTietLuotChoisTable extends Migration
             $table->bigIncrements('id');
             $table->integer('luot_choi_id');
             $table->integer('cau_hoi_id');
+            $table->foreign('luot_choi_id')->references('id')->on('luot_chois');
+            $table->foreign('cau_hoi_id')->references('id')->on('cau_hois');
             $table->text('phuong_an');
             $table->integer('diem');
             $table->timestamps();

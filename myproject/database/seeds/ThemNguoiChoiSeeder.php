@@ -23,7 +23,7 @@ class ThemNguoiChoiSeeder extends Seeder
         		'diem_cao_nhat'	=> rand(1000, 5000),
         		'credit'		=> rand(10, 500)
         	]);
-        	$count++;    
+        	$count++;
         }
-	}
+    }
 }
