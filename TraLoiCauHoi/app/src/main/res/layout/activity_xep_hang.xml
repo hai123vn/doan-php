@@ -101,7 +101,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/textView1"
                     android:layout_width="92dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -121,8 +121,8 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="109dp"
-                    android:layout_height="110dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
@@ -134,18 +134,36 @@
                         android:layout_width="109dp"
                         android:layout_height="110dp"
                         app:srcCompat="@drawable/avt" />
+
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/textView15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:layout_marginRight="4dp"
-                    android:text="9000 Điểm"
-                    android:textColor="@color/color_do"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtTenXH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Ten"
+                        android:textColor="@color/color_do"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDiemXH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:gravity="center"
+                        android:text="9000 Điểm"
+                        android:textColor="@color/color_do"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -164,7 +182,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView2222"
+                    android:id="@+id/textView2"
                     android:layout_width="92dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -184,8 +202,8 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="109dp"
-                    android:layout_height="110dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
@@ -193,22 +211,40 @@
                     app:cardCornerRadius="61dp">
 
                     <ImageView
-                        android:id="@+id/imageView92222"
+                        android:id="@+id/imageView2"
                         android:layout_width="109dp"
                         android:layout_height="110dp"
                         app:srcCompat="@drawable/avt" />
+
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/textView125"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="8000 Điểm"
-                    android:layout_marginRight="4dp"
-                    android:textColor="@color/color_do"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtTenXH1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Ten"
+                        android:textColor="@color/color_do"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDiem1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:gravity="center"
+                        android:text="9000 Điểm"
+                        android:textColor="@color/color_do"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -227,7 +263,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/textView3"
                     android:layout_width="92dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -247,8 +283,8 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="109dp"
-                    android:layout_height="110dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
@@ -256,25 +292,123 @@
                     app:cardCornerRadius="61dp">
 
                     <ImageView
-                        android:id="@+id/imageView7"
+                        android:id="@+id/imageView9"
                         android:layout_width="109dp"
                         android:layout_height="110dp"
                         app:srcCompat="@drawable/avt" />
+
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="7000 Điểm"
-                    android:layout_marginRight="4dp"
-                    android:textColor="@color/color_do"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtTenXH2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Ten"
+                        android:textColor="@color/color_do"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDiem2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:gravity="center"
+                        android:text="9000 Điểm"
+                        android:textColor="@color/color_do"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="92dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_text_tron_tim"
+                    android:gravity="center"
+                    android:text="4"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_khung"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="61dp">
+
+                    <ImageView
+                        android:id="@+id/imageView9"
+                        android:layout_width="109dp"
+                        android:layout_height="110dp"
+                        app:srcCompat="@drawable/avt" />
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtTenXH3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Ten"
+                        android:textColor="@color/color_do"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDiemXH3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:gravity="center"
+                        android:text="9000 Điểm"
+                        android:textColor="@color/color_do"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
 
     </LinearLayout>
