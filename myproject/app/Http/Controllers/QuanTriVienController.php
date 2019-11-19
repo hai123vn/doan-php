@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\QuanTriVien;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\DangNhapRequest;
+
 
 class QuanTriVienController extends Controller
 {
@@ -90,24 +92,15 @@ class QuanTriVienController extends Controller
         return view('dangnhap');
     }
 
-    public function xuLyDangNhap(Request $request)
+    public function xuLyDangNhap(DangNhapRequest $request)
     {
         $thongTin = $request->only(['ten_dang_nhap', 'mat_khau']);
-        $qtv = QuanTriVien::where('ten_dang_nhap', $thongTin['ten_dang_nhap'])->first();
 
-        if($qtv == null)
-        {
-            return "sai tên đăng nhập";
-        } 
-
-        if(!Hash::check($thongTin['mat_khau'], $qtv->mat_khau))
-        {
-            return "sai mật khẩu";
-        }
-
-        Auth::login($qtv);
-        
+        if(Auth::attempt(['ten_dang_nhap' => $thongTin['ten_dang_nhap'], 'password' => $thongTin['mat_khau']])) {
             return redirect()->route('trang-chu');
+        }
+            return redirect()->back()->with('thong-bao', 'Đăng nhập thất bại');
+             
     }
 
     public function dangXuat()

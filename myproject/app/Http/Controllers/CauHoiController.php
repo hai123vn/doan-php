@@ -82,7 +82,8 @@ class CauHoiController extends Controller
     public function edit($id)
     {
           $CauHoi = CauHoi::find($id);
-        return view('update-cauhoi', compact('CauHoi'));
+          $dsLinhVuc = LinhVuc::all();
+        return view('update-cauhoi', compact('CauHoi', 'dsLinhVuc'));
     }
 
     /**
@@ -92,9 +93,18 @@ class CauHoiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $dsCauHoi = CauHoi::find($request->id);
+        $dsCauHoi->noi_dung = $request->noi_dung;
+        $dsCauHoi->linh_vuc_id = $request->linh_vuc_id;
+        $dsCauHoi->phuong_an_a = $request->phuong_an_a;
+        $dsCauHoi->phuong_an_b = $request->phuong_an_b;
+        $dsCauHoi->phuong_an_c = $request->phuong_an_c;
+        $dsCauHoi->phuong_an_d = $request->phuong_an_d;
+        $dsCauHoi->dap_an = $request->dap_an;
+        $kq = $dsCauHoi->save();
+        return redirect()->route('cau-hoi.ds-cauhoi');
     }
 
     /**
@@ -105,6 +115,8 @@ class CauHoiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dsCauHoi = CauHoi::find($id);
+        $dsCauHoi -> Delete();
+        return redirect() ->route('cau-hoi.ds-cauhoi');
     }
 }
