@@ -16,7 +16,6 @@ class CreateLuotChoisTable extends Migration
         Schema::create('luot_chois', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('nguoi_choi_id');
-            $table->foreign('nguoi_choi_id')->references('id')->on('nguoi_chois');
             $table->integer('so_cau');
             $table->integer('diem');
             $table->timestamps();
