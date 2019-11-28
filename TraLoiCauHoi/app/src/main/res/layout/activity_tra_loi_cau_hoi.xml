@@ -167,59 +167,54 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/txtNoiDung"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:gravity="center"
-                    android:text="1+1=?"
                     android:textColor="#0A0A0A"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/btnLinhVuc"
+                    android:id="@+id/btnCauA"
                     android:layout_width="372dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/custom_button_doimau_cam"
-                    android:text="1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#D5FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/btnLinhVuc1"
+                    android:id="@+id/btnCauB"
                     android:layout_width="372dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/custom_button_doimau_cam"
-                    android:text="2"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#D5FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/btnLinhVuc2"
+                    android:id="@+id/btnCauC"
                     android:layout_width="372dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/custom_button_doimau_cam"
-                    android:text="3"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#D5FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/btnLinhVuc3"
+                    android:id="@+id/btnCauD"
                     android:layout_width="372dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/custom_button_doimau_cam"
-                    android:text="4"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#D5FFFFFF"
                     android:textSize="24sp"
