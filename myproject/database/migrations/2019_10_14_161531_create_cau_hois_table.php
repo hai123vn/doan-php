@@ -17,7 +17,6 @@ class CreateCauHoisTable extends Migration
             $table->bigIncrements('id');
             $table->text('noi_dung');
             $table->integer('linh_vuc_id');
-            // $table->foreign('linh_vuc_id')->references('id')->on('linh_vucs');
             $table->string('phuong_an_a');
             $table->string('phuong_an_b');
             $table->string('phuong_an_c');

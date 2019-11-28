@@ -18,11 +18,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imgLogo"
+            android:id="@+id/imageView16"
             android:layout_width="243dp"
             android:layout_height="244dp"
-            android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/logo1" />
+            app:srcCompat="@drawable/anhc" />
 
         <EditText
             android:id="@+id/txtTaiKhoan"
@@ -50,8 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/custom_button_xanh"
-            android:text="Đăng nhập"
             android:onClick="DangNhap"
+            android:text="Đăng nhập"
             android:textColor="#D5FFFF"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -62,8 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/custom_button_tim"
-            android:text="Quên mật khẩu"
             android:onClick="QuenMatKhau"
+            android:text="Quên mật khẩu"
             android:textColor="#D5FFFF"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -73,8 +72,8 @@
             android:layout_width="372dp"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button_do"
-            android:text="Đăng ký"
             android:onClick="DangKy"
+            android:text="Đăng ký"
             android:textColor="#D5FFFF"
             android:textSize="14sp"
             android:textStyle="bold" />
