@@ -340,9 +340,12 @@
                                     <i class="la la-dashboard"></i>TRANG CHỦ</a>
                             </li>
                             <li class="has-submenu">
-                                <a href="{{ route('linh-vuc.danhsach') }}"> <i class="la la-clone"></i>LĨNH VỰC</a>
-                            </li>
-
+                                <a href="{{ route('linh-vuc.danhsach') }}"> <i class="la la-clone"></i>LĨNH VỰC<div class="arrow-down"></div></a>
+                                <ul class="submenu">
+                                    <li class="has-submenu">
+                                        <a href="{{ route('linh-vuc.trash') }}">Danh sách lĩnh vực đã xóa</a>
+                                    </li>
+                                </ul>
                             <li class="has-submenu">
                                 <a href="{{ route('cau-hoi.ds-cauhoi') }}"> <i class="la la-briefcase"></i>CÂU HỎI</a>
                             </li>

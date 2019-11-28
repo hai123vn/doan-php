@@ -14,7 +14,7 @@ Route::middleware('auth')->group(function(){
 	Route::get('/', function (){
     	return view('layout');
 	})->name('trang-chu');
-
+// Linh Vuc
 	Route::prefix('linhvuc')->group(function(){
 		Route::name('linh-vuc.')->group(function(){
 			Route::get('/', 'LinhVucController@index')->name('danhsach')	;
@@ -23,9 +23,11 @@ Route::middleware('auth')->group(function(){
 			Route::get('/update/{id}', 'LinhVucController@edit')->name('edit');
 			Route::post('/update', 'LinhVucController@update')->name('update');
 			Route::delete('/xoa/{id}', 'LinhVucController@destroy')->name('xoa');
+			Route::get('/trash','LinhVucController@trashList')->name('trash');
+			Route::get('/restore','LinhVucController@restore')->name('restore');
 		});
 	});
-
+// Goi Credit
 	Route::prefix('goicredit')->group(function(){
 		Route::name('goi-credit.')->group(function(){
 			Route::get('/', 'GoiCreditController@index')->name('ds-goi-credit');
@@ -36,7 +38,7 @@ Route::middleware('auth')->group(function(){
 			Route::delete('/xoa/{id}', 'GoiCreditController@destroy')->name('xoa');
 		});
 	});
-
+// Cau Hoi
 	Route::prefix('cauhoi')->group(function(){
 		Route::name('cau-hoi.')->group(function(){
 			Route::get('/', 'CauHoiController@index')->name('ds-cauhoi');

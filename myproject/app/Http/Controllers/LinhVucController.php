@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\LinhVuc;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class LinhVucController extends Controller
 {
@@ -104,5 +105,15 @@ class LinhVucController extends Controller
         $dsLinhVuc = LinhVuc::find($id);
         $dsLinhVuc -> Delete();
         return redirect() ->route('linh-vuc.danhsach');
+    }
+
+    public function trashList() {
+        $trashList = LinhVuc::onlyTrashed()->get();
+        return view('LinhVuc/trash-linh-vuc',compact('trashLinhVuc'));
+    }
+
+    public function restore($id) {
+        $linhVuc = LinhVuc::restore()->findofFail($id)->restore();
+        return redirect()->route('linh-vuc.danhsach');
     }
 }
