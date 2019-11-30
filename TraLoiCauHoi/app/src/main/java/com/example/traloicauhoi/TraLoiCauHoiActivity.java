@@ -8,8 +8,10 @@ import androidx.loader.content.Loader;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,6 +24,8 @@ public class TraLoiCauHoiActivity extends AppCompatActivity implements LoaderMan
     private Button btnC;
     private Button btnD;
     private int mID;
+
+    private String kq,CauTraLoi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class TraLoiCauHoiActivity extends AppCompatActivity implements LoaderMan
           JSONObject jsonObject = new JSONObject(data);
           JSONObject json = jsonObject.getJSONObject("data");
 
+          this.kq=json.getString("dap_an");
 
           this.mNoiDung.setText(json.getString("noi_dung"));
           this.btnA.setText(json.getString("phuong_an_a"));
@@ -70,6 +75,11 @@ public class TraLoiCauHoiActivity extends AppCompatActivity implements LoaderMan
 
     @Override
     public void onLoaderReset(@NonNull Loader<String> loader) {
+
+    }
+
+
+    public void CheckCauTraLoi(View view) {
 
     }
 }
