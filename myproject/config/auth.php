@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' =>  'web',
         'passwords' => 'users',
     ],
 
@@ -38,12 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admin',
         ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
+            'driver' => 'jwt',
+            'provider' => 'player',
             'hash' => false,
         ],
     ],
@@ -66,15 +66,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'admin' => [
             'driver' => 'eloquent',
             'model' => App\QuanTriVien::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'player' => [
+            'driver' => 'eloquent',
+            'table' => App\NguoiChoi::class,
+        ],
     ],
 
     /*

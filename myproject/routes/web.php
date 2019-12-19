@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function(){
 			Route::post('/update', 'LinhVucController@update')->name('update');
 			Route::delete('/xoa/{id}', 'LinhVucController@destroy')->name('xoa');
 			Route::get('/trash','LinhVucController@trashList')->name('trash');
-			Route::get('/restore','LinhVucController@restore')->name('restore');
+			Route::get('/restore/{id}','LinhVucController@restore')->name('restore');
 		});
 	});
 // Goi Credit
@@ -51,8 +51,8 @@ Route::middleware('auth')->group(function(){
 	});
 });
 Route::get('dang-nhap', 'QuanTriVienController@dangNhap')->name('dang-nhap')->middleware("guest");
-Route::get('dang-xuat', 'QuanTriVienController@dangXuat')->name('dang-xuat');
+Route::get('dang-xuat', 'QuanTriVienController@index')->name('dang-xuat');
 Route::post('dang-nhap', 'QuanTriVienController@xuLyDangNhap')->name('xu-ly-dang-nhap');
-
+Route::get('log-out', 'QuanTriVienController@dangXuat')->name('log-out');
 
 

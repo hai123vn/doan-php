@@ -109,11 +109,11 @@ class LinhVucController extends Controller
 
     public function trashList() {
         $trashList = LinhVuc::onlyTrashed()->get();
-        return view('LinhVuc/trash-linh-vuc',compact('trashLinhVuc'));
+        return view('trash-linhvuc',compact('trashList'));
     }
 
     public function restore($id) {
-        $linhVuc = LinhVuc::restore()->findofFail($id)->restore();
+        $linhVuc = LinhVuc::onlyTrashed()->find($id)->restore();
         return redirect()->route('linh-vuc.danhsach');
     }
 }

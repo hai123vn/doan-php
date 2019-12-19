@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('linh-vuc', 'API\LinhVucController@layDanhSach');
 Route::get('cau-hoi', 'API\CauHoiController@layCauHoi');
 Route::get('nguoi-choi','API\NguoiChoiController@layDanhSach');
+Route::post('dang-nhap', 'API\LoginController@dangNhap');
+// Route::middleware([assign.guard, 'jwt.auth'])->group(function(){
+// 	Route::get('lay-thong-tin', 'API\LoginController@layThongTin');
+// });
