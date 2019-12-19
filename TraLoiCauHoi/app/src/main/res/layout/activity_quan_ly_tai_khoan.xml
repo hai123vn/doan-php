@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuanLyTaiKhoanActivity">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:layout_height="244dp"
             android:layout_marginBottom="10dp"
             android:padding="6dp"
-            app:srcCompat="@drawable/anhc" />
+            app:srcCompat="@drawable/logo1" />
 
         <EditText
             android:id="@+id/txtTaiKhoan"

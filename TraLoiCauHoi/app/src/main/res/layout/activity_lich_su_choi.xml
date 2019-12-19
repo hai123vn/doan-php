@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LichSuChoiActivity">
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                     android:layout_width="49dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/custom_background_nau"
+                    android:background="@drawable/custom_text_cam"
                     app:srcCompat="@drawable/ic_monetization_on_black_24dp" />
 
             </LinearLayout>
