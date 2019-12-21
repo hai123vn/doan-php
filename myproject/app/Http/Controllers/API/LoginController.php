@@ -9,11 +9,11 @@ class LoginController extends Controller
 {
     public function dangNhap(Request $request) {
     	$credentials = [
-    		'ten_dang_nhap' => $req->ten_dang_nhap;
-    		'mat_khau' => $req->mat_khau;
+    		'ten_dang_nhap' => $request->ten_dang_nhap,
+    		'password' => $request->mat_khau
     	];
     	#chứng thực
-    	if (!$token = auth('api')->attemp($credentials)) {
+    	if (!$token = auth('api')->attempt($credentials)) {
     		# sai tên đăng nhập || mật khẩu
     		return response()->json([
     			'status' => false,

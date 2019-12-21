@@ -43,8 +43,7 @@ return [
 
         'api' => [
             'driver' => 'jwt',
-            'provider' => 'player',
-            'hash' => false,
+            'provider' => 'player'
         ],
     ],
 
@@ -73,7 +72,7 @@ return [
 
         'player' => [
             'driver' => 'eloquent',
-            'table' => App\NguoiChoi::class,
+            'model' => App\NguoiChoi::class,
         ],
     ],
 

@@ -54,5 +54,6 @@ Route::get('dang-nhap', 'QuanTriVienController@dangNhap')->name('dang-nhap')->mi
 Route::get('dang-xuat', 'QuanTriVienController@index')->name('dang-xuat');
 Route::post('dang-nhap', 'QuanTriVienController@xuLyDangNhap')->name('xu-ly-dang-nhap');
 Route::get('log-out', 'QuanTriVienController@dangXuat')->name('log-out');
+Route::get('mail/send', 'SendMailController@send');
 
 
