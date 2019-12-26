@@ -157,6 +157,7 @@
 	                    <input class="form-control" id="dap_an" name="dap_an" required="" placeholder="nội dung">
 	                </div>
 	                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
+	                <button type="submit" class="btn btn-primary waves-effect waves-light">Sửa</button>
 	            </form>
 	        </div> <!-- end card-body-->
 	    </div> <!-- end card-->

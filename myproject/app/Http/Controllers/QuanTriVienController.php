@@ -18,7 +18,7 @@ class QuanTriVienController extends Controller
      */
     public function index()
     {
-        
+        return view('logout');
     }
 
     /**
