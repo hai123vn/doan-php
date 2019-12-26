@@ -209,7 +209,7 @@
                     app:cardCornerRadius="61dp">
 
                     <ImageView
-                        android:id="@+id/imgAVT2"
+                        android:id="@+id/img2"
                         android:layout_width="109dp"
                         android:layout_height="110dp"
                         app:srcCompat="@drawable/avt" />
