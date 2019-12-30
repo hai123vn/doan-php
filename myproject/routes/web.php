@@ -46,7 +46,9 @@ Route::middleware('auth')->group(function(){
 			Route::post('/them-moi', 'CauHoiController@store')->name('xl-them-moi');
 			Route::get('/update/{id}', 'CauHoiController@edit')->name('edit');
 			Route::get('/update', 'CauHoiController@update')->name('update');
-			Route::get('/xoa/{id}', 'CauHoiController@destroy')->name('xoa');
+			Route::delete('/xoa/{id}', 'CauHoiController@destroy')->name('xoa');
+			Route::get('/trash','CauHoiController@trashList')->name('trash');
+			Route::get('/restore/{id}','CauHoiController@restore')->name('restore');
 		});
 	});
 });

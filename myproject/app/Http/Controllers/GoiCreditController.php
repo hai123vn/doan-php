@@ -95,8 +95,7 @@ class GoiCreditController extends Controller
      */
     public function destroy($id)
     {
-        $dsGoiCredit = GoiCredit::find($id);
-        $dsGoiCredit -> Delete();
+        $dsGoiCredit = GoiCredit::find($id)->delete();
         return redirect() ->route('goi-credit.ds-goi-credit');
     }
 }

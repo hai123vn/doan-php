@@ -115,8 +115,27 @@ class CauHoiController extends Controller
      */
     public function destroy($id)
     {
-        $dsCauHoi = CauHoi::find($id);
-        $dsCauHoi -> Delete();
+        $dsCauHoi = CauHoi::find($id)->delete();      
         return redirect() ->route('cau-hoi.ds-cauhoi');
+    }
+
+    public function trashList() {
+        $db = CauHoi::onlyTrashed()->get();
+        return view('trash-cauhoi', compact('db'));
+    }
+
+    public function restore($id) {
+        try {
+            $cauHoi = CauHoi::onlyTrashed()->findOrFail($id);
+            $cauHoi->restore();
+            $linhVuc = LinhVuc::withTrashed()->findOrFail($cauHoi->linh_vuc_id)->restore();
+                if ($cauHoi && $linhVuc) {
+                    return redirect()->route('cau-hoi.ds-cauhoi');
+                }
+                    return back()->withErrors('Khôi phục câu hỏi thất bại');
+            
+        } catch (Exception $e) {
+            return back()->withErrors('Có lỗi xảy ra, mời thử lại');
+        }
     }
 }

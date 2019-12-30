@@ -348,6 +348,11 @@
                                 </ul>
                             <li class="has-submenu">
                                 <a href="{{ route('cau-hoi.ds-cauhoi') }}"> <i class="la la-briefcase"></i>CÂU HỎI</a>
+                                <ul class="submenu">
+                                    <li class="has-submenu">
+                                        <a href="{{ route('cau-hoi.trash') }}">Danh sách lĩnh vực đã xóa</a>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li class="has-submenu">
