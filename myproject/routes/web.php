@@ -51,6 +51,15 @@ Route::middleware('auth')->group(function(){
 			Route::get('/restore/{id}','CauHoiController@restore')->name('restore');
 		});
 	});
+// Nguoi choi
+	Route::prefix('nguoichoi')->group(function(){
+		Route::name('nguoi-choi.')->group(function(){
+			Route::get('/', 'NguoiChoiController@index')->name('ds-nguoichoi');
+			Route::delete('/xoa-nguoi-choi/{id}', 'NguoiChoiController@destroy')->name('remove');
+			Route::get('/ds-xoa', 'NguoiChoiController@trashList')->name('trash');
+			Route::delete('/khoi-phuc/', 'NguoiChoiController@restore')->name('restore'); 
+		});
+	});
 });
 Route::get('dang-nhap', 'QuanTriVienController@dangNhap')->name('dang-nhap')->middleware("guest");
 Route::get('dang-xuat', 'QuanTriVienController@index')->name('dang-xuat');
