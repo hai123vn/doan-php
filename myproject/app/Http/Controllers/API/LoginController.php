@@ -17,13 +17,14 @@ class LoginController extends Controller
     		# sai tên đăng nhập || mật khẩu
     		return response()->json([
     			'status' => false,
-    			'messsage' => 'Unauthorized.'
+    			'message' => 'Unauthorized'
+                // 'message' => 'Sai tài khoản hoặc mật khẩu'
     		], 401);
     	}
     	#chứng thực thành công
     	return response()->json([
     		'status' => true,
-    		'messsage' => 'Authorized',
+    		'message' => 'Authorized',
     		'token' => $token,
     		'type' => 'bearer',
     		'exprires' => auth('api')->factory()->getTTL() * 60

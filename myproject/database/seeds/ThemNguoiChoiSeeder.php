@@ -11,9 +11,9 @@ class ThemNguoiChoiSeeder extends Seeder
      */
     public function run()
     {
-<<<<<<< HEAD
+
         App\NguoiChoi::create([
-            'ten_dang_nhap' => 'nc1',
+            'ten_dang_nhap' => 'trancuong',
             'mat_khau' => Hash::make('123456'),
             'email' => 'abc@gmail.com',
             'hinh_dai_dien' => 'abc.jpg',
@@ -22,7 +22,7 @@ class ThemNguoiChoiSeeder extends Seeder
         ]);
 
         App\NguoiChoi::create([
-            'ten_dang_nhap' => 'nc2',
+            'ten_dang_nhap' => 'minhhai',
             'mat_khau' => Hash::make('123456'),
             'email' => 'abcd@gmail.com',
             'hinh_dai_dien' => 'abcd.jpg',
@@ -31,28 +31,27 @@ class ThemNguoiChoiSeeder extends Seeder
         ]);
 
         App\NguoiChoi::create([
-            'ten_dang_nhap' => 'nc3',
+            'ten_dang_nhap' => 'minhhoang',
             'mat_khau' => Hash::make('123456'),
             'email' => 'abcde@gmail.com',
             'hinh_dai_dien' => 'abcde.jpg',
             'diem_cao_nhat' => '1002',
             'credit' => '200'
         ]);
-=======
-        $count = 1;
-        while($count < 50) {
-			echo "Them nguoi choi thu " . $count . "\n";
-        	$tenDangNhap = Str::random(8);
-        	App\NguoiChoi::create([
-        		'ten_dang_nhap' => $tenDangNhap,
-        		'mat_khau'		=> Hash::make(Str::random(6)),
-        		'email'			=> $tenDangNhap . '@gmail.com',
-        		'hinh_dai_dien'	=> $tenDangNhap . '.jpg',
-        		'diem_cao_nhat'	=> rand(1000, 5000),
-        		'credit'		=> rand(10, 500)
-        	]);
-        	$count++;
-        }
->>>>>>> 415836d6459ed06eff56f4bc650db999fddc7814
+
+   //      $count = 1;
+   //      while($count < 50) {
+			// echo "Them nguoi choi thu " . $count . "\n";
+   //      	$tenDangNhap = Str::random(8);
+   //      	App\NguoiChoi::create([
+   //      		'ten_dang_nhap' => $tenDangNhap,
+   //      		'mat_khau'		=> Hash::make(Str::random(6)),
+   //      		'email'			=> $tenDangNhap . '@gmail.com',
+   //      		'hinh_dai_dien'	=> $tenDangNhap . '.jpg',
+   //      		'diem_cao_nhat'	=> rand(1000, 5000),
+   //      		'credit'		=> rand(10, 500)
+   //      	]);
+   //      	$count++;
+   //      }
     }
 }
