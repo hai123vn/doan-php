@@ -58,7 +58,7 @@
                     android:background="@drawable/ic_laucher_money" />
 
                 <TextView
-                    android:id="@+id/txtCredit3"
+                    android:id="@+id/txtCredit"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -129,6 +129,18 @@
                 android:background="@drawable/custom_button_cam"
                 android:onClick="MuaCredit"
                 android:text="Mua credit"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#D5FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnThoat"
+                android:layout_width="372dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_button_nau"
+                android:onClick="Thoat"
+                android:text="Thoát"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#D5FFFFFF"
                 android:textSize="18sp"

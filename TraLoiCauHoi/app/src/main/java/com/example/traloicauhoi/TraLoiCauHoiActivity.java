@@ -11,6 +11,7 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -27,7 +28,7 @@ import org.json.JSONObject;
 
 public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
 
-    public TextView mNoiDung,mSoCau,mDiem,mTime;
+    public TextView mNoiDung,mSoCau,mDiem,mTime,mCredit;
     public ImageView mImg1,mImg2,mImg3,mImg4,mImg5;
     private Button btnA;
     private Button btnB;
@@ -38,13 +39,22 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
     private static int SoCau=1,CauSai=0;
     private static int ChonLinhVuc=1;
     private static int Diem=0;
-    private String kq="",CauTraLoi="";
+    private String kq="",CauTraLoi="",credit;
     private CountDownTimer countDownTimer;
+
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
+    private static final String FILE_NAME_SHAREREF = "com.example.traloicauhoi";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tra_loi_cau_hoi);
+
+        sharedPreferences = getSharedPreferences(FILE_NAME_SHAREREF, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         Intent intent = getIntent();
         this.mID = intent.getIntExtra("ID",1);
@@ -62,6 +72,7 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         this.mImg3=findViewById(R.id.img3);
         this.mImg4=findViewById(R.id.img4);
         this.mImg5=findViewById(R.id.img5);
+        this.mCredit=findViewById(R.id.textCredit);
         if (getSupportLoaderManager().getLoader(0) != null)
         {
             getSupportLoaderManager().initLoader(0, null, this);
@@ -69,6 +80,7 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         getSupportLoaderManager().restartLoader(0, null, this);
 
         StarTime();
+        this.credit=sharedPreferences.getString("CREDIT","");
 
     }
 
@@ -92,6 +104,8 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
           this.btnB.setText(json.getString("phuong_an_b"));
           this.btnC.setText(json.getString("phuong_an_c"));
           this.btnD.setText(json.getString("phuong_an_d"));
+
+          this.mCredit.setText(credit);
 
 
       }catch (Exception e)

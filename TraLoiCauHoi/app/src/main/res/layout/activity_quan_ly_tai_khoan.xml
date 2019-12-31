@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:ems="10"
+            android:enabled="false"
             android:hint="Tên đăng nhập"
             android:inputType="textPersonName"
             android:textSize="24sp" />
@@ -50,7 +51,7 @@
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="Mật khẩu"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:textSize="24sp" />
 
         <EditText

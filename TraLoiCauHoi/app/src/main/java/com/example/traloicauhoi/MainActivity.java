@@ -25,7 +25,18 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
-    private static final String FILE_NAME_SHAREREF = "com.doanltandroid.quizme";
+    private static final String FILE_NAME_SHAREREF = "com.example.traloicauhoi";
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        String token = sharedPreferences.getString("TOKEN", "");
+//        Log.d("TOKEN", token);
+//        if (token != "") {
+//            Intent intent = new Intent(this, ManHinhChinhActivity.class);
+//            startActivity(intent);
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +49,20 @@ public class MainActivity extends AppCompatActivity {
         editUsername =(EditText) findViewById(R.id.txtTaiKhoan);
         editPassword =(EditText) findViewById(R.id.txtMatKhau);
         btnLogin = (Button) findViewById(R.id.btnDangNhap);
+
+        String token = sharedPreferences.getString("TOKEN", "");
+        Log.d("TOKEN", token);
+        if (token != "") {
+            Intent intent = new Intent(this, ManHinhChinhActivity.class);
+            startActivity(intent);
+        }
+
+
     }
 
     public void DangNhap(View view) {
-        String tenDangNhap=editUsername.getText().toString();
-        String password=editPassword.getText().toString();
+        String tenDangNhap= editUsername.getText().toString();
+        String password= editPassword.getText().toString();
 
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setTitle("Đang đăng nhập");
@@ -51,14 +71,23 @@ public class MainActivity extends AppCompatActivity {
         new DangNhapLoader(){
             @Override
             protected void onPostExecute(String s) {
-                dialog.cancel();
+
                 try{
                     JSONObject json = new JSONObject(s);
                     boolean status = json.getBoolean("status");
+                    String credit=json.getJSONObject("user").getString("credit");
+                    String email=json.getJSONObject("user").getString("email");
                     if(status)
                     {
+                        String hoten=editUsername.getText().toString();
                         String token="Bear "+json.getString("token");
                         editor.putString("TOKEN",token);
+                        editor.commit();
+                        editor.putString("HOTEN",hoten);
+                        editor.commit();
+                        editor.putString("CREDIT",credit);
+                        editor.commit();
+                        editor.putString("EMAIL",email);
                         editor.commit();
                         Intent intent = new Intent(MainActivity.this, ManHinhChinhActivity.class);
                         startActivity(intent);

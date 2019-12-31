@@ -8,9 +8,11 @@ import androidx.loader.content.Loader;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,17 +25,32 @@ public class ChonLinhVucActivity extends AppCompatActivity implements LoaderMana
     private ArrayList<LinhVuc> mListLinhVuc;
     protected Context mContext;
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
+    private static final String FILE_NAME_SHAREREF = "com.example.traloicauhoi";
+
     public int id,id1,id2,id3;
     private Button btnLinhVuc;
     private Button btnLinhVuc1;
     private Button btnLinhVuc2;
     private Button btnLinhVuc3;
+    private TextView mTen,mCredit;
+    private String ten,credit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chon_linh_vuc);
 
+        sharedPreferences = getSharedPreferences(FILE_NAME_SHAREREF, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
         this.mListLinhVuc = new ArrayList<>();
+
+        mTen=findViewById(R.id.txtTen);
+        mCredit=findViewById(R.id.textCredit);
+
+
 
         btnLinhVuc=findViewById(R.id.btnLinhVuc);
         btnLinhVuc1=findViewById(R.id.btnLinhVuc1);
@@ -46,6 +63,10 @@ public class ChonLinhVucActivity extends AppCompatActivity implements LoaderMana
         }
 
         getSupportLoaderManager().restartLoader(0,null,this);
+
+        this.ten=sharedPreferences.getString("HOTEN","");
+        this.credit=sharedPreferences.getString("CREDIT","");
+
 
     }
 
@@ -70,12 +91,16 @@ public class ChonLinhVucActivity extends AppCompatActivity implements LoaderMana
              this.id2=itemArray.getJSONObject(2).getInt("id");
              this.id3=itemArray.getJSONObject(3).getInt("id");
 
+
             //gán cho button
             // chỉ có 4 chuỗi nên getJSON 0->3
             btnLinhVuc.setText(itemArray.getJSONObject(0).getString("ten_linh_vuc"));
             btnLinhVuc1.setText(itemArray.getJSONObject(1).getString("ten_linh_vuc"));
             btnLinhVuc2.setText(itemArray.getJSONObject(2).getString("ten_linh_vuc"));
             btnLinhVuc3.setText(itemArray.getJSONObject(3).getString("ten_linh_vuc"));
+
+            this.mTen.setText(ten);
+            this.mCredit.setText(credit);
 
 
         }catch (Exception e)

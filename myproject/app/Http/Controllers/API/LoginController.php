@@ -22,13 +22,25 @@ class LoginController extends Controller
     		], 401);
     	}
     	#chứng thực thành công
+        $user = auth('api')->user();
     	return response()->json([
     		'status' => true,
     		'message' => 'Authorized',
+            'user' => $user,
     		'token' => $token,
     		'type' => 'bearer',
     		'exprires' => auth('api')->factory()->getTTL() * 60
     	], 200);
+    }
+
+    public function dangXuat()
+    {
+        auth('api')->logout();
+        $res = [
+            'success'   => true,
+            'msg'       => 'Đăng xuất thành công'
+        ];
+        return response()->json($res);
     }
 
     public function layThongTin() {

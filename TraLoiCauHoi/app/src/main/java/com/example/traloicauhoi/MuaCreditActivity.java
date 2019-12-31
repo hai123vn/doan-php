@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -15,6 +16,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MuaCreditActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private TextView mTen,mCredit;
+    private String ten,credit;
+
+    private static final String FILE_NAME_SHAREREF = "com.example.traloicauhoi";
     private TextView mTenCredit,mGoiCredit,mTenCredit1,mGoiCredit1,mTenCredit2,mGoiCredit2,mTenCredit3,mGoiCredit3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +38,21 @@ public class MuaCreditActivity extends AppCompatActivity implements LoaderManage
         mGoiCredit2=(TextView)findViewById(R.id.txtCredit2);
         mGoiCredit3=(TextView)findViewById(R.id.txtCredit3);
 
+        mTen=findViewById(R.id.txtTen);
+        mCredit=findViewById(R.id.textCredit);
+
+        sharedPreferences = getSharedPreferences(FILE_NAME_SHAREREF, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
         if(getSupportLoaderManager().getLoader(0)!=null)
         {
             getSupportLoaderManager().initLoader(0,null,this);
         }
 
         getSupportLoaderManager().restartLoader(0,null,this);
+
+        this.ten=sharedPreferences.getString("HOTEN","");
+        this.credit=sharedPreferences.getString("CREDIT","");
     }
 
 
@@ -63,6 +79,9 @@ public class MuaCreditActivity extends AppCompatActivity implements LoaderManage
 
             mGoiCredit3.setText(itemArray.getJSONObject(3).getString("credit"));
             mTenCredit3.setText(itemArray.getJSONObject(3).getString("ten_goi"));
+
+            this.mTen.setText(ten);
+            this.mCredit.setText(credit);
         }catch (Exception e)
         {
             e.printStackTrace();
