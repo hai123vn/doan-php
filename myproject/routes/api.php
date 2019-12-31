@@ -22,5 +22,4 @@ Route::get('cau-hoi', 'API\CauHoiController@layCauHoi');
 Route::get('nguoi-choi','API\NguoiChoiController@layDanhSach');
 Route::post('dang-nhap', 'API\LoginController@dangNhap');
 // Route::middleware([assign.guard, 'jwt.auth'])->group(function(){
-// 	Route::get('lay-thong-tin', 'API\LoginController@layThongTin');
-// });
+Route::get('lay-thong-tin', 'API\LoginController@layDanhSach');
