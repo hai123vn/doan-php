@@ -33,6 +33,7 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
     private Button btnB;
     private Button btnC;
     private Button btnD;
+    private Button btnLoaiDASai;
     private int mID;
     private static int SoCau=1,CauSai=0;
     private static int ChonLinhVuc=1;
@@ -99,7 +100,7 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
       }
     }
 
-    //time
+    //diem nguoc time
     public void StarTime() {
         this.countDownTimer = new CountDownTimer(31000, 1000) {
             @Override

@@ -58,7 +58,7 @@
                     android:background="@drawable/ic_laucher_money" />
 
                 <TextView
-                    android:id="@+id/txtCredit"
+                    android:id="@+id/txtCredit3"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

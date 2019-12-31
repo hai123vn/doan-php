@@ -53,7 +53,7 @@ public class XepHangActivity extends AppCompatActivity implements LoaderManager.
 
         try {
             JSONObject jsonObject = new JSONObject(data);//Nhận chuỗi json
-            JSONArray itemArray = jsonObject.getJSONArray("data"); //lay ds linh vuc
+            JSONArray itemArray = jsonObject.getJSONArray("data"); //lay ds nguoi choi
 
             //gán cho button
             // chỉ có 4 chuỗi nên getJSON 0->3
