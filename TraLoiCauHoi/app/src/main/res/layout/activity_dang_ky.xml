@@ -64,12 +64,12 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/btnDangNhap"
+            android:id="@+id/btnDangKy"
             android:layout_width="372dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/custom_button_xanh"
-            android:text="Đăng nhập"
+            android:text="Đăng Ký"
             android:textColor="#D5FFFF"
             android:textSize="14sp"
             android:textStyle="bold" />
