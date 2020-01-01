@@ -38,23 +38,25 @@
 			        }
 			    });
 
-			    $('.xoa-cau-hoi').click(function(e) {
-			    	e.preventDefault();// de no dung lai khong phai chuyen page
-			    	var th = $(this);
-			    	Swal.fire({
-			            title: "Are you sure?",
-			            text: "You won't be able to revert this!",
-			            type: "success",
-			            showCancelButton: !0,
-			            confirmButtonColor: "#3085d6",
-			            cancelButtonColor: "#d33",
-			            confirmButtonText: "Yes, delete it!"
-			        }).then(function(t) {
-			            if(t.value) {
-			            	th.parent().submit()
-			            }
-			        })
-			    });
+			    $(document).on('click', '.xoa-cau-hoi', function(e) {
+		            e.preventDefault();
+		            var th = $(this);
+		            Swal.fire({
+		                title: "Bạn có chắc muốn xoá?",
+		                html: "<div class='text-secondary'>Lưu ý: Câu hỏi bị xoá có thể khôi phục lại</div>",
+		                type: "warning",
+		                showCancelButton: !0,
+		                confirmButtonColor: "#3085d6",
+		                cancelButtonColor: "#d33",
+		                confirmButtonText: "Xác nhận",
+		                cancelButtonText: "Huỷ bỏ"
+		            }).then(function(t) {
+		                    if (t.value) {
+		                        Swal.fire("Đã xóa!", "Tệp của bạn đã xóa.", "success")
+		                        th.parent().submit();
+		                    }
+		            })
+        		});
 			});
 		</script>
         <!-- third party js ends -->
@@ -89,7 +91,7 @@
 	                		<tr>
 	                			<td>{{ $cauhoi->id }}</td>
 			                	<td>{{ $cauhoi->noi_dung }}</td>
-			                	<td>{{ $cauhoi->linhVuc->ten_linh_vuc}}</td>
+			                	<td>{{ $cauhoi->linh_vuc_id}}</td>
 			                	<td>{{ $cauhoi->phuong_an_a}}</td>
 			                	<td>{{ $cauhoi->phuong_an_b}}</td>
 			                	<td>{{ $cauhoi->phuong_an_c}}</td>

@@ -60,6 +60,12 @@ Route::middleware('auth')->group(function(){
 			Route::delete('/khoi-phuc/', 'NguoiChoiController@restore')->name('restore'); 
 		});
 	});
+// Lich su mua credit
+	Route::prefix('lich-su-credit')->group(function(){
+		Route::name('lich-su-credit.')->group(function(){
+			Route::get('/', 'LichSuMuaCreditController@index')->name('ls-credit');
+		});
+	});
 });
 Route::get('dang-nhap', 'QuanTriVienController@dangNhap')->name('dang-nhap')->middleware("guest");
 Route::get('dang-xuat', 'QuanTriVienController@index')->name('dang-xuat');
