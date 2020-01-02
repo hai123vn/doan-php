@@ -10,6 +10,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -81,6 +83,11 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
 
         StarTime();
         this.credit=sharedPreferences.getString("CREDIT","");
+        if(CauSai>0)
+        {
+            LuotChoi(CauSai);
+        }
+
 
     }
 
@@ -138,13 +145,17 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
 
     public void LuotChoi(int cauSai)
     {
-        if(cauSai==1)
+        if(cauSai==1) {
+
             mImg5.setVisibility(View.INVISIBLE);
+        }
         else if(cauSai==2){
+
             mImg5.setVisibility(View.INVISIBLE);
             mImg4.setVisibility(View.INVISIBLE);
         }
         else if(cauSai==3) {
+
             mImg5.setVisibility(View.INVISIBLE);
             mImg4.setVisibility(View.INVISIBLE);
             mImg3.setVisibility(View.INVISIBLE);
@@ -161,8 +172,9 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
             mImg3.setVisibility(View.INVISIBLE);
             mImg2.setVisibility(View.INVISIBLE);
             mImg1.setVisibility(View.INVISIBLE);
+            taoThongBao("Thông báo","Bạn Đã Thua Cuộc").show();
+            ResetDiem();
             this.CauSai=0;
-            Toast.makeText(this,"Bạn Đã Thua Cuộc",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -186,6 +198,11 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
             this.mSoCau.setText(Integer.toString(SoCau));
         }
         this.SoCau++;
+        editor.putInt("DIEM",Diem);
+        editor.commit();
+        editor.putInt("SoCau",SoCau);
+        editor.commit();
+
     }
     public  void ResetDiem()
     {
@@ -194,9 +211,10 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
     }
 
     public void CheckCauTraLoiA(View view) {
-        btnB.setClickable(false);
-        btnC.setClickable(false);
-        btnD.setClickable(false);
+        btnA.setEnabled(false);
+        btnB.setEnabled(false);
+        btnC.setEnabled(false);
+        btnD.setEnabled(false);
         btnA.setBackgroundResource(R.drawable.custom_button_xanh_la);
 
         this.CauTraLoi = btnA.getText().toString();
@@ -207,30 +225,31 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         }
         else
         {
-            ResetDiem();
+            if(CauSai==5) {
+                taoThongBao("Thông báo","Bạn Đã Thua Cuộc").show();
+            }
             //hien thi cau dung
-            if(this.kq.equalsIgnoreCase(btnB.getText().toString()))
-            {
-                btnB.setBackgroundResource(R.drawable.custom_button_cam);
+            else {
+                if (this.kq.equalsIgnoreCase(btnB.getText().toString())) {
+                    btnB.setBackgroundResource(R.drawable.custom_button_cam);
+                } else if (this.kq.equalsIgnoreCase(btnC.getText().toString())) {
+                    btnC.setBackgroundResource(R.drawable.custom_button_cam);
+                } else {
+                    btnD.setBackgroundResource(R.drawable.custom_button_cam);
+                }
+                finish();
+                startActivity(getIntent());
+                StopTime();
             }
-            else if(this.kq.equalsIgnoreCase(btnC.getText().toString()))
-            {
-                btnC.setBackgroundResource(R.drawable.custom_button_cam);
-            }
-            else
-            {
-                btnD.setBackgroundResource(R.drawable.custom_button_cam);
-            }
-            StopTime();
-            CauSai++;
-            LuotChoi(CauSai);
+            this.CauSai++;
         }
     }
 
     public void CheckCauTraLoiB(View view) {
-        btnC.setClickable(false);
-        btnD.setClickable(false);
-        btnA.setClickable(false);
+        btnA.setEnabled(false);
+        btnB.setEnabled(false);
+        btnC.setEnabled(false);
+        btnD.setEnabled(false);
         btnB.setBackgroundResource(R.drawable.custom_button_xanh_la);
         this.CauTraLoi=btnB.getText().toString();
         if(this.kq.equalsIgnoreCase(CauTraLoi))
@@ -240,30 +259,33 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         }
         else
         {
-            ResetDiem();
-            if(this.kq.equalsIgnoreCase(btnA.getText().toString()))
+            if(CauSai==5)
             {
-                btnA.setBackgroundResource(R.drawable.custom_button_cam);
+                taoThongBao("Thông Báo","Bạn Đã Thua Cuộc").show();
             }
-            else if(this.kq.equalsIgnoreCase(btnC.getText().toString()))
-            {
-                btnC.setBackgroundResource(R.drawable.custom_button_cam);
+            else {
+//            ResetDiem();
+                if (this.kq.equalsIgnoreCase(btnA.getText().toString())) {
+                    btnA.setBackgroundResource(R.drawable.custom_button_cam);
+                } else if (this.kq.equalsIgnoreCase(btnC.getText().toString())) {
+                    btnC.setBackgroundResource(R.drawable.custom_button_cam);
+                } else {
+                    btnD.setBackgroundResource(R.drawable.custom_button_cam);
+                }
+                finish();
+                startActivity(getIntent());
+                StopTime();
             }
-            else
-            {
-                btnD.setBackgroundResource(R.drawable.custom_button_cam);
-            }
-
             this.CauSai++;
-            LuotChoi(CauSai);
-            StopTime();
+
         }
     }
 
     public void CheckCauTraLoiC(View view) {
-        btnA.setClickable(false);
-        btnB.setClickable(false);
-        btnD.setClickable(false);
+        btnA.setEnabled(false);
+        btnB.setEnabled(false);
+        btnC.setEnabled(false);
+        btnD.setEnabled(false);
 
         btnC.setBackgroundResource(R.drawable.custom_button_xanh_la);
         this.CauTraLoi=btnC.getText().toString();
@@ -273,29 +295,31 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         }
         else
         {
-            ResetDiem();
-            if(this.kq.equalsIgnoreCase(btnA.getText().toString()))
-            {
-                btnA.setBackgroundResource(R.drawable.custom_button_cam);
+            if(CauSai==5) {
+                taoThongBao("Thông báo","Bạn Đã Thua Cuộc").show();
             }
-            else if(this.kq.equalsIgnoreCase(btnB.getText().toString()))
-            {
-                btnB.setBackgroundResource(R.drawable.custom_button_cam);
-            }
-            else
-            {
-                btnD.setBackgroundResource(R.drawable.custom_button_cam);
+            else {
+                if (this.kq.equalsIgnoreCase(btnA.getText().toString())) {
+                    btnA.setBackgroundResource(R.drawable.custom_button_cam);
+                } else if (this.kq.equalsIgnoreCase(btnB.getText().toString())) {
+                    btnB.setBackgroundResource(R.drawable.custom_button_cam);
+                } else {
+                    btnD.setBackgroundResource(R.drawable.custom_button_cam);
+                }
+                finish();
+                startActivity(getIntent());
+                StopTime();
             }
             this.CauSai++;
-            LuotChoi(CauSai);
-            StopTime();
+
         }
     }
 
     public void CheckCauTraLoiD(View view) {
-        btnA.setClickable(false);
-        btnB.setClickable(false);
-        btnC.setClickable(false);
+        btnA.setEnabled(false);
+        btnB.setEnabled(false);
+        btnC.setEnabled(false);
+        btnD.setEnabled(false);
         btnD.setBackgroundResource(R.drawable.custom_button_xanh_la);
         this.CauTraLoi=btnD.getText().toString();
         if(this.kq.equalsIgnoreCase(CauTraLoi))
@@ -304,23 +328,37 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         }
         else
         {
-            ResetDiem();
-
-            if(this.kq.equalsIgnoreCase(btnA.getText().toString()))
-            {
-                btnA.setBackgroundResource(R.drawable.custom_button_cam);
+//            ResetDiem();
+            if(CauSai==5) {
+                taoThongBao("Thông báo","Bạn Đã Thua Cuộc").show();
             }
-            else if(this.kq.equalsIgnoreCase(btnB.getText().toString()))
-            {
-                btnB.setBackgroundResource(R.drawable.custom_button_cam);
-            }
-            else
-            {
-                btnC.setBackgroundResource(R.drawable.custom_button_cam);
+            else {
+                if (this.kq.equalsIgnoreCase(btnA.getText().toString())) {
+                    btnA.setBackgroundResource(R.drawable.custom_button_cam);
+                } else if (this.kq.equalsIgnoreCase(btnB.getText().toString())) {
+                    btnB.setBackgroundResource(R.drawable.custom_button_cam);
+                } else {
+                    btnC.setBackgroundResource(R.drawable.custom_button_cam);
+                }
+                finish();
+                startActivity(getIntent());
+                StopTime();
             }
             this.CauSai++;
-            LuotChoi(CauSai);
-            StopTime();
         }
+    }
+    public AlertDialog taoThongBao(String tieuDe, String thongBao) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(thongBao).setTitle(tieuDe);
+        builder.setCancelable(false);
+        builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(TraLoiCauHoiActivity.this,ManHinhChinhActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        return builder.create();
     }
 }
