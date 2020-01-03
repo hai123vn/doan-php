@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class ManHinhChinhActivity extends AppCompatActivity {
     private TextView mTen,mCredit;
     private String credit,username;
+    private int diem,socau;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -28,6 +29,8 @@ public class ManHinhChinhActivity extends AppCompatActivity {
 
         this.username=sharedPreferences.getString("HOTEN","");
         this.credit=sharedPreferences.getString("CREDIT","");
+        this.diem=sharedPreferences.getInt("DIEM",1);
+        this.socau=sharedPreferences.getInt("SoCau",1);
         this.mTen.setText(username);
         this.mCredit.setText(credit);
     }
