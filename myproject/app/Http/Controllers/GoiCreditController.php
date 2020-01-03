@@ -37,14 +37,23 @@ class GoiCreditController extends Controller
      */
     public function store(Request $request)
     {
-        $goiCredit = new GoiCredit;
-        $goiCredit->ten_goi = $request->ten_goi;
-        $goiCredit->credit = $request->credit;
-        $goiCredit->so_tien = $request->so_tien;
-        $goiCredit->save();
+       
 
         // return back(); Quay ve trang truoc
-        return redirect()->route('goi-credit.ds-goi-credit');
+        //return redirect()->route('goi-credit.ds-goi-credit');
+        try{
+            $goiCredit = new GoiCredit;
+            $goiCredit->ten_goi = $request->ten_goi;
+            $goiCredit->credit = $request->credit;
+            $goiCredit->so_tien = $request->so_tien;
+            $goiCredit->save();
+            return back()->with('msg', "Thêm gói credit thành công");
+        } catch (Exception $e)
+        {
+            return back()
+                        ->withErrors('Có lỗi xảy ra, mời thử lại sau')
+                        ->withInput();
+        }
     }
 
     /**
@@ -79,12 +88,25 @@ class GoiCreditController extends Controller
      */
     public function update(Request $request)
     {
-        $dsGoiCredit = GoiCredit::find($request->id);
-        $dsGoiCredit->ten_goi = $request->ten_goi;
-        $dsGoiCredit->credit = $request->credit;
-        $dsGoiCredit->so_tien = $request->so_tien;  
-        $kq = $dsGoiCredit->save();
-        return redirect()->route('goi-credit.ds-goi-credit');
+        try {
+            $dsGoiCredit = GoiCredit::find($request->id);
+            $dsGoiCredit->ten_goi = $request->ten_goi;
+            $dsGoiCredit->credit = $request->credit;
+            $dsGoiCredit->so_tien = $request->so_tien;  
+            $kq = $dsGoiCredit->save();
+            if ($kq) {
+                return redirect()
+                        ->route('goi-credit.ds-goi-credit')
+                        ->with('msg',"Cập nhật gói credit thành công");
+             }
+            return back()
+                    ->withErrors('Cập nhật lĩnh vực thất bại')
+                    ->withInput();
+        } catch (Exception $e) {
+            return back()
+                    ->withErrors('Có lỗi xảy ra, mời thử lại sau')
+                    ->withInput();
+        }
     }
 
     /**
@@ -95,7 +117,39 @@ class GoiCreditController extends Controller
      */
     public function destroy($id)
     {
-        $dsGoiCredit = GoiCredit::find($id)->delete();
-        return redirect() ->route('goi-credit.ds-goi-credit');
+       
+        //return redirect() ->route('goi-credit.ds-goi-credit');
+         try{
+            $dsGoiCredit = GoiCredit::find($id)->delete();
+            return back()->with('msg', "Xóa lĩnh vực thành công");
+        } catch (Exception $e)
+        {
+            return back()
+                        ->withErrors('Có lỗi xảy ra, mời thử lại sau')
+                        ->withInput();
+        }
+    }
+
+
+      public function trashList()
+        {
+            $db = GoiCredit::onlyTrashed()->get();
+            return view('trash-goicredit', compact('db'));
+        }
+
+      public function restore(Request $request)
+    {
+        try {
+            $id = $request->id;
+            $kq = GoiCredit::onlyTrashed()
+                    ->findOrFail($id)
+                    ->restore();
+            if ($kq) {
+                return back()->with('msg', 'Khôi phục gói credit thành công');
+            }
+            return back()->withErrors('Khôi phục gói credit thất bại');
+        } catch (Exception $ex) {
+            return back()->withErrors('Có lỗi xãy ra, mời thử lại sau');
+        }
     }
 }

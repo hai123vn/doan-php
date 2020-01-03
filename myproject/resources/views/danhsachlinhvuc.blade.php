@@ -42,13 +42,13 @@
 			    	e.preventDefault();// de no dung lai khong phai chuyen page
 			    	var th = $(this);
 			    	Swal.fire({
-			            title: "Are you sure?",
-			            text: "You won't be able to revert this!",
+			            title: "Bạn có muốn xóa?",
+			            text: "Lưu ý ! Lĩnh vực bị xoá có thể khôi phục lại",
 			            type: "success",
 			            showCancelButton: !0,
 			            confirmButtonColor: "#3085d6",
 			            cancelButtonColor: "#d33",
-			            confirmButtonText: "Yes, delete it!"
+			            confirmButtonText: "Đồng ý, xóa!"
 			        }).then(function(t) {
 			            if(t.value) {
 			            	th.parent().submit()

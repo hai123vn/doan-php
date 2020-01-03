@@ -87,11 +87,24 @@ class LinhVucController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {
-        $dsLinhVuc = LinhVuc::find($request->id);
-        $dsLinhVuc->ten_linh_vuc = $request->ten_linh_vuc;  
-        $kq = $dsLinhVuc->save();
-        return redirect()->route('linh-vuc.danhsach');
+    {       
+        try {      
+            $dsLinhVuc = LinhVuc::find($request->id);
+            $dsLinhVuc->ten_linh_vuc = $request->ten_linh_vuc;  
+            $kq = $dsLinhVuc->save();
+            if ($kq) {
+                return redirect()
+                        ->route('linh-vuc.danhsach')
+                        ->with('msg',"Cập nhật lĩnh vực thành công");
+             }
+            return back()
+                    ->withErrors('Cập nhật lĩnh vực thất bại')
+                    ->withInput();
+        } catch (Exception $e) {
+             return back()
+                    ->withErrors('Có lỗi xảy ra, mời thử lại sau')
+                    ->withInput();
+        }
     }
 
     /**
@@ -102,9 +115,16 @@ class LinhVucController extends Controller
      */
     public function destroy($id)
     {
-        $dsLinhVuc = LinhVuc::find($id);
-        $dsLinhVuc -> Delete();
-        return redirect() ->route('linh-vuc.danhsach');
+        try{
+            $dsLinhVuc = LinhVuc::find($id);
+            $dsLinhVuc -> Delete();
+            return back()->with('msg', "Xóa lĩnh vực thành công");
+        } catch (Exception $e)
+        {
+            return back()
+                        ->withErrors('Có lỗi xảy ra, mời thử lại sau')
+                        ->withInput();
+        }
     }
 
     public function trashList() {

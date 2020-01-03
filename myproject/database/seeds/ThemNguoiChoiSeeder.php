@@ -53,5 +53,9 @@ class ThemNguoiChoiSeeder extends Seeder
    //      	]);
    //      	$count++;
    //      }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 99288e4b3611821679b9df7df97b4e59968409e2
     }
 }

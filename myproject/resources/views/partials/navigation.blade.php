@@ -340,14 +340,14 @@
                                     <i class="la la-dashboard"></i>TRANG CHỦ</a>
                             </li>
                             <li class="has-submenu">
-                                <a href="{{ route('linh-vuc.danhsach') }}"> <i class="la la-mortar-board"></i>LĨNH VỰC<div class="arrow-down"></div></a>
+                                <a href="{{ route('linh-vuc.danhsach') }}"> <i class="la la-mortar-board"></i>LĨNH VỰC</a>
                                 <ul class="submenu">
                                     <li class="has-submenu">
                                         <a href="{{ route('linh-vuc.trash') }}">Danh sách lĩnh vực đã xóa</a>
                                     </li>
                                 </ul>
                             <li class="has-submenu">
-                                <a href="{{ route('cau-hoi.ds-cauhoi') }}"> <i class="la la-question"></i>CÂU HỎI<div class="arrow-down"></div></a>
+                                <a href="{{ route('cau-hoi.ds-cauhoi') }}"> <i class="la la-question"></i>CÂU HỎI</a>
                                 <ul class="submenu">
                                     <li class="has-submenu">
                                         <a href="{{ route('cau-hoi.trash') }}">Danh sách lĩnh vực đã xóa</a>
@@ -357,16 +357,16 @@
 
                             <li class="has-submenu">
                                 <a href="{{ route('goi-credit.ds-goi-credit') }}">
-                                    <i class="la la-diamond"></i>GÓI CREDIT <div class="arrow-down"></div></a>
+                                    <i class="la la-diamond"></i>GÓI CREDIT </a>
                                 <ul class="submenu">
                                             <li class="has-submenu">
-                                                <a href="{{ route('cau-hoi.trash') }}">Danh sách gói credit đã xóa</a>
+                                                <a href="{{ route('goi-credit.trash') }}">Danh sách gói credit đã xóa</a>
                                             </li>                            
                                 </ul>
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('nguoi-choi.ds-nguoichoi') }}"> <i class="icon-user"></i>NGƯỜI CHƠI <div class="arrow-down"></div></a>
+                                <a href="{{ route('nguoi-choi.ds-nguoichoi') }}"> <i class="icon-user"></i>NGƯỜI CHƠI</a>
                                 <ul class="submenu">
                                     <li class="has-submenu">
                                                 <a href="{{ route('nguoi-choi.trash') }}">Danh sách người chơi đã xóa</a>
@@ -375,10 +375,8 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="#"> <i class="la la-file-text-o"></i>CHI TIẾT LƯỢT CHƠI <div class="arrow-down"></div></a>
-                                <ul class="submenu megamenu">
-
-                                </ul>
+                                <a href="{{ route('lich-su-credit.ls-credit') }}"><i class="la la-history"></i>LỊCH SỬ MUA CREDIT</a>
+                                    
                             </li>
 
                         </ul>

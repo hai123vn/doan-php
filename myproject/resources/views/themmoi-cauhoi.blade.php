@@ -9,7 +9,7 @@
         <!-- third party css end -->
 @endsection
 @section('main-content')
-<div class="col-lg-4">
+<div class="col-lg-12">
 	    <div class="card">
 	        <div class="card-body">
 	            <h4 class="mb-3 header-title">Thêm mới câu hỏi</h4>

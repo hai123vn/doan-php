@@ -95,16 +95,30 @@ class CauHoiController extends Controller
      */
     public function update(Request $request)
     {
-        $dsCauHoi = CauHoi::find($request->id);
-        $dsCauHoi->noi_dung = $request->noi_dung;
-        $dsCauHoi->linh_vuc_id = $request->linh_vuc_id;
-        $dsCauHoi->phuong_an_a = $request->phuong_an_a;
-        $dsCauHoi->phuong_an_b = $request->phuong_an_b;
-        $dsCauHoi->phuong_an_c = $request->phuong_an_c;
-        $dsCauHoi->phuong_an_d = $request->phuong_an_d;
-        $dsCauHoi->dap_an = $request->dap_an;
-        $kq = $dsCauHoi->save();
-        return redirect()->route('cau-hoi.ds-cauhoi');
+     //   return redirect()->route('cau-hoi.ds-cauhoi');
+        try{
+            $dsCauHoi = CauHoi::find($request->id);
+            $dsCauHoi->noi_dung = $request->noi_dung;
+            $dsCauHoi->linh_vuc_id = $request->linh_vuc_id;
+            $dsCauHoi->phuong_an_a = $request->phuong_an_a;
+            $dsCauHoi->phuong_an_b = $request->phuong_an_b;
+            $dsCauHoi->phuong_an_c = $request->phuong_an_c;
+            $dsCauHoi->phuong_an_d = $request->phuong_an_d;
+            $dsCauHoi->dap_an = $request->dap_an;
+            $kq = $dsCauHoi->save();
+            if ($kq) {
+                return redirect()
+                        ->route('cau-hoi.ds-cauhoi')
+                        ->with('msg', 'Cập nhật câu hỏi thành công');
+            }
+            return back()
+                    ->withErrors('Cập nhật câu hỏi thất bại')
+                    ->withInput();
+             } catch (Exception $e) {
+            return back()
+                    ->withErrors('Có lỗi xảy ra, mời thử lại sau')
+                    ->withInput();
+        }
     }
 
     /**
@@ -115,8 +129,17 @@ class CauHoiController extends Controller
      */
     public function destroy($id)
     {
-        $dsCauHoi = CauHoi::find($id)->delete();      
-        return redirect() ->route('cau-hoi.ds-cauhoi');
+           
+       // return redirect() ->route('cau-hoi.ds-cauhoi');
+        try{
+        $dsCauHoi = CauHoi::find($id)->delete();   
+            return back()->with('msg', 'Xóa câu hỏi thành công');
+        } catch (Exception $e)
+        {
+            return back()
+                        ->withErrors('Có lỗi xảy ra, mời thử lại sau')
+                        ->withInput();
+        }
     }
 
     public function trashList() {

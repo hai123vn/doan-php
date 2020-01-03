@@ -1,12 +1,10 @@
-@extends('layout')
-
 @section('css')
 <!-- third party css -->
 <link href="{{ asset('assets/libs/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/libs/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
+<!-- third party css end -->
 @endsection
 
 @section('js')
@@ -26,7 +24,7 @@
         <script src="{{asset('assets/libs/pdfmake/vfs_fonts.js') }}"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
-			    $("#goicredit-datatable").DataTable({
+			    $("#linhvuc-datatable").DataTable({
 			        language: {
 			            paginate: {
 			                previous: "<i class='mdi mdi-chevron-left'>",
@@ -37,9 +35,8 @@
 			            $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
 			        }
 			    });
-			});
 
-			$('.xoa-goi-credit').click(function(e) {
+			    $('.xoa-linh-vuc').click(function(e) {
 			    	e.preventDefault();// de no dung lai khong phai chuyen page
 			    	var th = $(this);
 			    	Swal.fire({
@@ -56,44 +53,44 @@
 			            }
 			        })
 			    });
+			});
 		</script>
         <!-- third party js ends -->
 @endsection
+
 @section('main-content')
 <div>
 	@include('thongbao')
 	@include('thongbaoloi')
 </div>
 <div class="row">
-	<div class="col-6">
+	<div class="col-12">
 	    <div class="card">
 	        <div class="card-body">
-	            <h4 class="header-title">Danh sách gói credit</h4>	       
-	            <table id="goicredit-datatable" class="table dt-responsive nowrap">
+	            <h4 class="header-title">Danh sách lĩnh vực đã xóa</h4>	       
+	            <table id="linhvuc-datatable" class="table dt-responsive nowrap">
 	                <thead>
 	                    <tr>
 	                        <th>ID</th>
 	                        <th>Tên gói</th>
 	                        <th>Credit</th>
 	                        <th>Số tiền</th>
+	                        <th>Thời gian xóa</th>
 	                        <th></th>
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                	@foreach($dsGoiCredit as $goicredit)
+	                	@foreach($db as $goicrd)
 	                		<tr>
-	                			<td>{{ $goicredit->id }}</td>
-			                	<td>{{ $goicredit->ten_goi }}</td>
-			                	<td>{{ $goicredit->credit }}</td>
-			                	<td>{{ $goicredit->so_tien }}</td>
+	                			<td>{{ $goicrd->id }}</td>
+			                	<td>{{ $goicrd->ten_goi }}</td>
+			                	<td>{{ $goicrd->credit }}</td>
+			                	<td>{{ $goicrd->so_tien }}</td>
+			                	<td>{{ $goicrd->deleted_at }}</td>
 			                	<td>
-			                		<form action="{{ route('goi-credit.xoa', ['id' => $goicredit->id ]) }}" method="POST">
-			                			@csrf
-			                			@method('DELETE')
-				                		<a href="{{ route('goi-credit.edit', ['id' => $goicredit->id ]) }}" type="button" class="btn btn-danger waves-effect waves-light"><i class="icon-wrench"></i></a>
-				                		
-				                		<button type="submit" class="xoa-goi-credit btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></button>
-			                		</form>
+			                		<a href="{{ route('goi-credit.restore', ['id' => $goicrd->id ]) }}" class="btn btn-info waves-effect waves-light">
+			                			<i class="fe-chevrouns-up" >Phục Hồi</i>
+			                		</a>
 			                	</td>
 	                		</tr>
 	                	@endforeach
@@ -102,31 +99,6 @@
 	        </div> <!-- end card body-->
 	    </div> <!-- end card -->
 	</div><!-- end col-->
-	<div class="col-lg-6">
-	    <div class="card">
-	        <div class="card-body">
-	            <h4 class="mb-3 header-title">Thêm mới gói credit</h4>
-
-	            <form action="{{ route('goi-credit.xl-them-moi') }}" method="POST">
-	            	@csrf
-	                <div class="form-group">
-	                    <label for="exampleInputEmail1">Tên gói</label>
-	                    <input class="form-control" id="ten_goi" name="ten_goi" placeholder="Tên gói">
-	                </div>
-	                <div class="form-group">
-	                    <label for="exampleInputEmail1">Credit</label>
-	                    <input class="form-control" id="credit" name="credit" placeholder="Credit">
-	                </div>
-	                <div class="form-group">
-	                    <label for="exampleInputEmail1">Số tiền</label>
-	                    <input class="form-control" id="so_tien" name="so_tien" placeholder="Số tiền">
-	                </div>
-	                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
-	            </form>
-
-	        </div> <!-- end card-body-->
-	    </div> <!-- end card-->
-	</div><!-- end col -->
-</div>
+	@extends('layout')
 @endsection 
-	
+

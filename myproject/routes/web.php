@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function(){
 			Route::get('/update/{id}', 'GoiCreditController@edit')->name('edit');
 			Route::post('/update', 'GoiCreditController@update')->name('update');
 			Route::delete('/xoa/{id}', 'GoiCreditController@destroy')->name('xoa');
+			Route::get('/trash','GoiCreditController@trashList')->name('trash');
+			Route::get('/restore/{id}','GoiCreditController@restore')->name('restore');
 		});
 	});
 // Cau Hoi
@@ -45,7 +47,7 @@ Route::middleware('auth')->group(function(){
 			Route::get('/them-moi', 'CauHoiController@create')->name('them-moi');
 			Route::post('/them-moi', 'CauHoiController@store')->name('xl-them-moi');
 			Route::get('/update/{id}', 'CauHoiController@edit')->name('edit');
-			Route::get('/update', 'CauHoiController@update')->name('update');
+			Route::post('/update', 'CauHoiController@update')->name('update');
 			Route::delete('/xoa/{id}', 'CauHoiController@destroy')->name('xoa');
 			Route::get('/trash','CauHoiController@trashList')->name('trash');
 			Route::get('/restore/{id}','CauHoiController@restore')->name('restore');
@@ -58,6 +60,12 @@ Route::middleware('auth')->group(function(){
 			Route::delete('/xoa-nguoi-choi/{id}', 'NguoiChoiController@destroy')->name('remove');
 			Route::get('/ds-xoa', 'NguoiChoiController@trashList')->name('trash');
 			Route::delete('/khoi-phuc/', 'NguoiChoiController@restore')->name('restore'); 
+		});
+	});
+// Lich su mua credit
+	Route::prefix('lich-su-credit')->group(function(){
+		Route::name('lich-su-credit.')->group(function(){
+			Route::get('/', 'LichSuMuaCreditController@index')->name('ls-credit');
 		});
 	});
 });
