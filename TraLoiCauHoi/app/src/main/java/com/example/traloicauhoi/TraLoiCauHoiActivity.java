@@ -28,6 +28,9 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
 
     public TextView mNoiDung,mSoCau,mDiem,mTime,mCredit;
@@ -104,8 +107,8 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
           JSONObject json = jsonObject.getJSONObject("data");
 
           this.kq=json.getString("dap_an");
-          this.mSoCau.setText(Integer.toString(SoCau));
-          this.mDiem.setText(Integer.toString(Diem));
+          this.mSoCau.setText(Integer.toString(sharedPreferences.getInt("SoCau",1)));
+          this.mDiem.setText(Integer.toString(sharedPreferences.getInt("DIEM",1)));
           this.mNoiDung.setText(json.getString("noi_dung"));
           this.btnA.setText(json.getString("phuong_an_a"));
           this.btnB.setText(json.getString("phuong_an_b"));
@@ -174,6 +177,7 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
             mImg1.setVisibility(View.INVISIBLE);
             taoThongBao("Thông báo","Bạn Đã Thua Cuộc").show();
             ResetDiem();
+            StopTime();
             this.CauSai=0;
         }
     }
@@ -208,6 +212,8 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
     {
         this.Diem=0;
         this.SoCau=1;
+
+
     }
 
     public void CheckCauTraLoiA(View view) {
@@ -292,6 +298,7 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         if(this.kq.equalsIgnoreCase(CauTraLoi))
         {
             TangSoCau();
+            StopTime();
         }
         else
         {
@@ -325,6 +332,7 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         if(this.kq.equalsIgnoreCase(CauTraLoi))
         {
             TangSoCau();
+            StopTime();
         }
         else
         {
@@ -354,6 +362,25 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                ResetDiem();
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat dinhDangNgay= new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat dinhDangGio= new SimpleDateFormat("HH:mm:ss a");
+                String tentk=sharedPreferences.getString("HOTEN","");
+                String ngaychoi=dinhDangNgay.format(calendar.getTime())+" "+dinhDangGio.format(calendar.getTime());//ngay + gio
+                String diemso=Integer.toString(sharedPreferences.getInt("DIEM",1))+" Điểm";
+                String socau=String.valueOf(sharedPreferences.getInt("SoCau",1));
+                LichSuEntry lichSuEntry = new LichSuEntry(TraLoiCauHoiActivity.this,tentk,ngaychoi,diemso,socau);
+                lichSuEntry.themLichSu();
+//                if(kq>0)
+//                {
+//                    Toast.makeText(TraLoiCauHoiActivity.this,"Thêm số điện thoại thành công",Toast.LENGTH_SHORT).show();
+//
+//                }
+//                else
+//                {
+//                    Toast.makeText(TraLoiCauHoiActivity.this,"Thêm số điện thoại thất bại",Toast.LENGTH_SHORT).show();
+//                }
                 Intent intent = new Intent(TraLoiCauHoiActivity.this,ManHinhChinhActivity.class);
                 startActivity(intent);
 
