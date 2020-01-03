@@ -91,7 +91,7 @@
 	                		<tr>
 	                			<td>{{ $cauhoi->id }}</td>
 			                	<td>{{ $cauhoi->noi_dung }}</td>
-			                	<td>{{ $cauhoi->linh_vuc_id}}</td>
+			                	<td>{{ $cauhoi->linhVuc->ten_linh_vuc }}</td>
 			                	<td>{{ $cauhoi->phuong_an_a}}</td>
 			                	<td>{{ $cauhoi->phuong_an_b}}</td>
 			                	<td>{{ $cauhoi->phuong_an_c}}</td>

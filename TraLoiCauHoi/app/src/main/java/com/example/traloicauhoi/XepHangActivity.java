@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -19,20 +20,32 @@ public class XepHangActivity extends AppCompatActivity implements LoaderManager.
     private TextView txtDiemXH1;
     private TextView txtTenXH2;
     private TextView txtDiemXH2;
-    private TextView txtTenXH3;
-    private TextView txtDiemXH3;
+    private TextView mTen,mCredit;
+
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
+    private String ten,credit;
+
+    private static final String FILE_NAME_SHAREREF = "com.example.traloicauhoi";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xep_hang);
+
+        sharedPreferences = getSharedPreferences(FILE_NAME_SHAREREF, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
         txtTenXH=findViewById(R.id.txtTenXH);
         txtDiemXH=findViewById(R.id.txtDiemXH);
         txtTenXH1=findViewById(R.id.txtTenXH1);
         txtDiemXH1=findViewById(R.id.txtDiemXH1);
         txtTenXH2=findViewById(R.id.txtTenXH2);
         txtDiemXH2=findViewById(R.id.txtDiemXH2);
+        mTen=findViewById(R.id.txtTen);
+        mCredit=findViewById(R.id.textCredit);
 
         if(getSupportLoaderManager().getLoader(0)!=null)
         {
@@ -40,6 +53,9 @@ public class XepHangActivity extends AppCompatActivity implements LoaderManager.
         }
 
         getSupportLoaderManager().restartLoader(0,null,this);
+
+        this.ten=sharedPreferences.getString("HOTEN","");
+        this.credit=sharedPreferences.getString("CREDIT","");
     }
 
     @NonNull
@@ -63,6 +79,9 @@ public class XepHangActivity extends AppCompatActivity implements LoaderManager.
             txtDiemXH1.setText(itemArray.getJSONObject(3).getString("diem_cao_nhat"));
             txtTenXH2.setText(itemArray.getJSONObject(4).getString("ten_dang_nhap"));
             txtDiemXH2.setText(itemArray.getJSONObject(5).getString("diem_cao_nhat"));
+
+            this.mTen.setText(ten);
+            this.mCredit.setText(credit);
 
         }catch (Exception e)
         {

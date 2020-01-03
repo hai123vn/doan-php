@@ -13,7 +13,7 @@ class ThemNguoiChoiSeeder extends Seeder
     {
 
         App\NguoiChoi::create([
-            'ten_dang_nhap' => 'nc1',
+            'ten_dang_nhap' => 'trancuong',
             'mat_khau' => Hash::make('123456'),
             'email' => 'abc@gmail.com',
             'hinh_dai_dien' => 'abc.jpg',
@@ -22,7 +22,7 @@ class ThemNguoiChoiSeeder extends Seeder
         ]);
 
         App\NguoiChoi::create([
-            'ten_dang_nhap' => 'nc2',
+            'ten_dang_nhap' => 'minhhai',
             'mat_khau' => Hash::make('123456'),
             'email' => 'abcd@gmail.com',
             'hinh_dai_dien' => 'abcd.jpg',
@@ -31,7 +31,7 @@ class ThemNguoiChoiSeeder extends Seeder
         ]);
 
         App\NguoiChoi::create([
-            'ten_dang_nhap' => 'nc3',
+            'ten_dang_nhap' => 'minhhoang',
             'mat_khau' => Hash::make('123456'),
             'email' => 'abcde@gmail.com',
             'hinh_dai_dien' => 'abcde.jpg',
@@ -53,6 +53,9 @@ class ThemNguoiChoiSeeder extends Seeder
    //      	]);
    //      	$count++;
    //      }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99288e4b3611821679b9df7df97b4e59968409e2
     }
 }

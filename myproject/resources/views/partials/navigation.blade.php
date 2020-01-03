@@ -360,7 +360,7 @@
                                     <i class="la la-diamond"></i>GÓI CREDIT </a>
                                 <ul class="submenu">
                                             <li class="has-submenu">
-                                                <a href="{{ route('cau-hoi.trash') }}">Danh sách gói credit đã xóa</a>
+                                                <a href="{{ route('goi-credit.trash') }}">Danh sách gói credit đã xóa</a>
                                             </li>                            
                                 </ul>
                             </li>
