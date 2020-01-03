@@ -15,11 +15,16 @@ class LoginController extends Controller
     	#chứng thực
     	if (!$token = auth('api')->attempt($credentials)) {
     		# sai tên đăng nhập || mật khẩu
-    		return response()->json([
-    			'status' => false,
-    			'message' => 'Unauthorized'
-                // 'message' => 'Sai tài khoản hoặc mật khẩu'
-    		], 401);
+    		// return response()->json([
+    			// 'status' => false,
+    			// 'message' => 'Unauthorized'
+      //           // 'message' => 'Sai tài khoản hoặc mật khẩu'
+    		// ]);
+            $res =[
+                'status' => false,
+                'message' => 'Sai tài khoản hoặc mật khẩu'
+            ];
+            return response()->json($res);
     	}
     	#chứng thực thành công
         $user = auth('api')->user();
@@ -30,7 +35,7 @@ class LoginController extends Controller
     		'token' => $token,
     		'type' => 'bearer',
     		'exprires' => auth('api')->factory()->getTTL() * 60
-    	], 200);
+    	]);
     }
 
     public function dangXuat()

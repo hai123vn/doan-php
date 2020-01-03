@@ -31,7 +31,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
+public class TraLoiCauHoiActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
 
     public TextView mNoiDung,mSoCau,mDiem,mTime,mCredit;
     public ImageView mImg1,mImg2,mImg3,mImg4,mImg5;
@@ -131,10 +131,10 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
             public void onTick(long millisUntilFinished) {
                 mTime.setText(String.valueOf(millisUntilFinished / 1000));
             }
-
             @Override
             public void onFinish() {
-               Toast.makeText(TraLoiCauHoiActivity.this,"Đã hết giờ",Toast.LENGTH_SHORT).show();
+                Toast.makeText(TraLoiCauHoiActivity.this,"Het gio",Toast.LENGTH_SHORT).show();
+                ThemLichSu();
                Intent intent = new Intent(TraLoiCauHoiActivity.this,ManHinhChinhActivity.class);
                startActivity(intent);
             }
@@ -176,9 +176,9 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
             mImg2.setVisibility(View.INVISIBLE);
             mImg1.setVisibility(View.INVISIBLE);
             taoThongBao("Thông báo","Bạn Đã Thua Cuộc").show();
-            ResetDiem();
             StopTime();
             this.CauSai=0;
+            this.ChonLinhVuc=1;
         }
     }
 
@@ -211,7 +211,11 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
     public  void ResetDiem()
     {
         this.Diem=0;
+        editor.putInt("DIEM",Diem);
+        editor.commit();
         this.SoCau=1;
+        editor.putInt("SoCau",SoCau);
+        editor.commit();
 
 
     }
@@ -270,7 +274,6 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
                 taoThongBao("Thông Báo","Bạn Đã Thua Cuộc").show();
             }
             else {
-//            ResetDiem();
                 if (this.kq.equalsIgnoreCase(btnA.getText().toString())) {
                     btnA.setBackgroundResource(R.drawable.custom_button_cam);
                 } else if (this.kq.equalsIgnoreCase(btnC.getText().toString())) {
@@ -336,7 +339,6 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         }
         else
         {
-//            ResetDiem();
             if(CauSai==5) {
                 taoThongBao("Thông báo","Bạn Đã Thua Cuộc").show();
             }
@@ -355,6 +357,23 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
             this.CauSai++;
         }
     }
+
+    public void ThemLichSu()
+    {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dinhDangNgay= new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dinhDangGio= new SimpleDateFormat("HH:mm:ss a");
+        String tentk=sharedPreferences.getString("HOTEN","");
+        String ngaychoi=dinhDangNgay.format(calendar.getTime())+" "+dinhDangGio.format(calendar.getTime());//ngay + gio
+        String diemso=Integer.toString(sharedPreferences.getInt("DIEM",1))+" Điểm";
+        String socau=String.valueOf(sharedPreferences.getInt("SoCau",1));
+        LichSuEntry lichSuEntry = new LichSuEntry(TraLoiCauHoiActivity.this,tentk,ngaychoi,diemso,socau);
+        lichSuEntry.themLichSu();
+        ResetDiem();
+        Intent intent = new Intent(TraLoiCauHoiActivity.this,ManHinhChinhActivity.class);
+        startActivity(intent);
+    }
+
     public AlertDialog taoThongBao(String tieuDe, String thongBao) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(thongBao).setTitle(tieuDe);
@@ -362,25 +381,8 @@ public class TraLoiCauHoiActivity<countDownTimer> extends AppCompatActivity impl
         builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                ThemLichSu();
                 ResetDiem();
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat dinhDangNgay= new SimpleDateFormat("dd/MM/yyyy");
-                SimpleDateFormat dinhDangGio= new SimpleDateFormat("HH:mm:ss a");
-                String tentk=sharedPreferences.getString("HOTEN","");
-                String ngaychoi=dinhDangNgay.format(calendar.getTime())+" "+dinhDangGio.format(calendar.getTime());//ngay + gio
-                String diemso=Integer.toString(sharedPreferences.getInt("DIEM",1))+" Điểm";
-                String socau=String.valueOf(sharedPreferences.getInt("SoCau",1));
-                LichSuEntry lichSuEntry = new LichSuEntry(TraLoiCauHoiActivity.this,tentk,ngaychoi,diemso,socau);
-                lichSuEntry.themLichSu();
-//                if(kq>0)
-//                {
-//                    Toast.makeText(TraLoiCauHoiActivity.this,"Thêm số điện thoại thành công",Toast.LENGTH_SHORT).show();
-//
-//                }
-//                else
-//                {
-//                    Toast.makeText(TraLoiCauHoiActivity.this,"Thêm số điện thoại thất bại",Toast.LENGTH_SHORT).show();
-//                }
                 Intent intent = new Intent(TraLoiCauHoiActivity.this,ManHinhChinhActivity.class);
                 startActivity(intent);
 

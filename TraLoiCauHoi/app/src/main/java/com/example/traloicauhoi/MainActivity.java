@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         new DangNhapLoader(){
             @Override
             protected void onPostExecute(String s) {
-
+                dialog.cancel();
                 try{
                     JSONObject json = new JSONObject(s);
                     boolean status = json.getBoolean("status");
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, ManHinhChinhActivity.class);
                         startActivity(intent);
                     }
-                    else
+                   else
                     {
                         String message = json.getString("message");
                         taoThongBao("Thông Báo", message).show();
